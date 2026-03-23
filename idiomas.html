@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idiomas - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.id-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.id-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #1a3a8a, #c8102e, #002868, #3b82c4); }
+
+.id-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.id-badge { display: inline-flex; align-items: center; gap: 7px; background: #e8f2fc; color: #1a5a9a; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(59,130,196,.2); }
+.id-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82c4; display: inline-block; }
+.id-flag { font-size: 2rem; margin-bottom: 12px; display: block; }
+.id-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.id-titulo em { font-style: italic; color: #3b82c4; }
+.id-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 620px; margin: 0 auto; }
+
+.id-info-box { border-left: 4px solid #3b82c4; border-radius: 0 14px 14px 0; background: #e8f2fc; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.id-info-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.id-info-titulo { font-size: 0.9rem; font-weight: 800; color: #1a5a9a; margin-bottom: 6px; }
+.id-info-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.id-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.id-sec-titulo em { font-style: italic; color: #3b82c4; }
+
+.id-etapas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px; }
+.id-etapa { border-radius: 14px; padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; border: 1.5px solid rgba(26,33,18,.08); transition: transform 0.2s, box-shadow 0.2s; }
+.id-etapa:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.id-etapa-top { display: flex; align-items: center; gap: 12px; }
+.id-etapa-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.id-etapa-titulo { font-size: 0.95rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.id-etapa-edad { font-size: 0.72rem; font-weight: 700; color: #8a9480; margin-top: 1px; }
+.id-etapa-texto { font-size: 0.81rem; color: #4a5240; line-height: 1.68; }
+.id-etapa-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.67rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; padding: 3px 10px; border-radius: 100px; align-self: flex-start; }
+
+.id-destrezas { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.id-destreza { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 13px; padding: 20px 16px; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; transition: transform 0.2s, box-shadow 0.2s; }
+.id-destreza:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+.id-destreza-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+.id-destreza-titulo { font-size: 0.82rem; font-weight: 800; color: #1a2112; line-height: 1.25; }
+.id-destreza-texto { font-size: 0.75rem; color: #4a5240; line-height: 1.55; }
+
+.id-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.id-meto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.id-meto { border: 1.5px solid rgba(26,33,18,.08); border-radius: 13px; padding: 18px 18px; display: flex; align-items: flex-start; gap: 12px; background: #fff; transition: border-color 0.18s, background 0.18s; }
+.id-meto:hover { border-color: rgba(59,130,196,.3); background: #e8f2fc; }
+.id-meto-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+.id-meto-titulo { font-size: 0.86rem; font-weight: 800; color: #1a2112; margin-bottom: 4px; }
+.id-meto-texto { font-size: 0.78rem; color: #4a5240; line-height: 1.62; }
+
+.id-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.id-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.id-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(59,130,196,.25); }
+.id-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.id-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.id-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.id-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .id-etapas { grid-template-columns: 1fr; }
+  .id-destrezas { grid-template-columns: 1fr 1fr; }
+  .id-meto-grid { grid-template-columns: 1fr; }
+  .id-nav { grid-template-columns: 1fr; }
+  .id-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .id-section { padding: 36px 5% 36px; }
+  .id-info-box { flex-direction: column; gap: 10px; }
+  .id-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="id-section">
+
+  <div class="id-hero">
+    <div class="id-badge"><span class="id-badge-dot"></span>&nbsp;Más servicios · CEIP El Tejar</div>
+    <span class="id-flag">🇬🇧</span>
+    <h1 class="id-titulo">Idiomas — <em>Inglés</em></h1>
+    <p class="id-desc">En el CEIP El Tejar apostamos por el aprendizaje del inglés como herramienta fundamental para el desarrollo integral del alumnado y su preparación para un mundo cada vez más globalizado.</p>
+  </div>
+
+  <div class="id-info-box">
+    <div class="id-info-icon">🌍</div>
+    <div>
+      <p class="id-info-titulo">Inglés desde Educación Infantil</p>
+      <p class="id-info-texto">La enseñanza del inglés comienza desde el segundo ciclo de Educación Infantil, con un enfoque comunicativo y lúdico que favorece la adquisición natural de la lengua desde edades tempranas. A lo largo de Primaria, el área amplía progresivamente su presencia en el currículo trabajando las cuatro destrezas básicas.</p>
+    </div>
+  </div>
+
+  <h2 class="id-sec-titulo">El inglés en cada <em>etapa</em></h2>
+  <div class="id-etapas">
+
+    <div class="id-etapa" style="background:#fffbea;border-color:rgba(245,200,66,.28);">
+      <div class="id-etapa-top">
+        <div class="id-etapa-icon" style="background:rgba(245,200,66,.2);">🌱</div>
+        <div>
+          <p class="id-etapa-titulo">Educación Infantil</p>
+          <p class="id-etapa-edad">2º Ciclo · 3 a 6 años</p>
+        </div>
+      </div>
+      <p class="id-etapa-texto">Primer contacto con la lengua inglesa a través del juego, canciones, cuentos y rutinas del aula. El objetivo es crear una actitud positiva y despertar la curiosidad por el idioma de forma natural y sin presión.</p>
+      <span class="id-etapa-tag" style="background:rgba(245,200,66,.2);color:#7a5c00;">🎵 Lúdico y oral</span>
+    </div>
+
+    <div class="id-etapa" style="background:#e8f2fc;border-color:rgba(59,130,196,.2);">
+      <div class="id-etapa-top">
+        <div class="id-etapa-icon" style="background:rgba(59,130,196,.15);">📚</div>
+        <div>
+          <p class="id-etapa-titulo">Educación Primaria</p>
+          <p class="id-etapa-edad">1º a 6º · 6 a 12 años</p>
+        </div>
+      </div>
+      <p class="id-etapa-texto">Progresión estructurada de las cuatro destrezas comunicativas en el horario lectivo ordinario. Se trabaja con metodología comunicativa y materiales audiovisuales, consolidando comprensión y expresión oral y escrita.</p>
+      <span class="id-etapa-tag" style="background:rgba(59,130,196,.15);color:#1a5a9a;">📖 Las 4 destrezas</span>
+    </div>
+
+  </div>
+
+  <h2 class="id-sec-titulo">Las cuatro <em>destrezas</em></h2>
+  <div class="id-destrezas">
+    <div class="id-destreza">
+      <div class="id-destreza-icon" style="background:#e8f2fc;">👂</div>
+      <p class="id-destreza-titulo">Comprensión oral</p>
+      <p class="id-destreza-texto">Escuchar y entender mensajes y conversaciones en inglés.</p>
+    </div>
+    <div class="id-destreza">
+      <div class="id-destreza-icon" style="background:#eaf7ec;">🗣️</div>
+      <p class="id-destreza-titulo">Expresión oral</p>
+      <p class="id-destreza-texto">Hablar y comunicarse en inglés con confianza y fluidez.</p>
+    </div>
+    <div class="id-destreza">
+      <div class="id-destreza-icon" style="background:#fff3e4;">📖</div>
+      <p class="id-destreza-titulo">Comprensión lectora</p>
+      <p class="id-destreza-texto">Leer y entender textos escritos en inglés de distintos tipos.</p>
+    </div>
+    <div class="id-destreza">
+      <div class="id-destreza-icon" style="background:#fffbea;">✍️</div>
+      <p class="id-destreza-titulo">Expresión escrita</p>
+      <p class="id-destreza-texto">Escribir textos y mensajes correctos y coherentes en inglés.</p>
+    </div>
+  </div>
+
+  <div class="id-divisor"></div>
+
+  <h2 class="id-sec-titulo">Nuestro <em>enfoque metodológico</em></h2>
+  <div class="id-meto-grid">
+    <div class="id-meto">
+      <span class="id-meto-icon">💬</span>
+      <div>
+        <p class="id-meto-titulo">Metodología comunicativa</p>
+        <p class="id-meto-texto">Centrada en el uso real del idioma en situaciones cotidianas. El alumnado aprende a comunicarse desde el primer momento, no solo a memorizar gramática.</p>
+      </div>
+    </div>
+    <div class="id-meto">
+      <span class="id-meto-icon">🎵</span>
+      <div>
+        <p class="id-meto-titulo">Canciones, juegos y proyectos</p>
+        <p class="id-meto-texto">Actividades orales, canciones y proyectos grupales hacen del aprendizaje una experiencia motivadora y significativa.</p>
+      </div>
+    </div>
+    <div class="id-meto">
+      <span class="id-meto-icon">💻</span>
+      <div>
+        <p class="id-meto-titulo">Recursos digitales y audiovisuales</p>
+        <p class="id-meto-texto">Materiales audiovisuales y plataformas digitales que enriquecen las clases y acercan al alumnado al inglés auténtico.</p>
+      </div>
+    </div>
+    <div class="id-meto">
+      <span class="id-meto-icon">🌟</span>
+      <div>
+        <p class="id-meto-titulo">Ambiente motivador y participativo</p>
+        <p class="id-meto-texto">El aula de inglés es un espacio donde el error forma parte del aprendizaje y la participación es bienvenida. El objetivo es que el alumnado pierda el miedo a hablar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="id-divisor"></div>
+
+  <h2 class="id-sec-titulo">Otros <em>servicios</em></h2>
+  <div class="id-nav">
+    <a href="biblioteca.html" class="id-nav-card">
+      <div class="id-nav-icon" style="background:#fffbea;">📚</div>
+      <div>
+        <p class="id-nav-label">Servicio</p>
+        <p class="id-nav-titulo">Biblioteca Escolar</p>
+      </div>
+      <span class="id-nav-arrow">→</span>
+    </a>
+    <a href="index.html" class="id-nav-card">
+      <div class="id-nav-icon" style="background:#eaf7ec;">📋</div>
+      <div>
+        <p class="id-nav-label">El Centro</p>
+        <p class="id-nav-titulo">Planes y Proyectos</p>
+      </div>
+      <span class="id-nav-arrow">→</span>
+    </a>
+    <a href="ampa.html" class="id-nav-card">
+      <div class="id-nav-icon" style="background:#e8f2fc;">👨‍👩‍👧</div>
+      <div>
+        <p class="id-nav-label">Asociación</p>
+        <p class="id-nav-titulo">AMPA</p>
+      </div>
+      <span class="id-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
