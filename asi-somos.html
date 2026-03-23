@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Así somos - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.as-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.as-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #3a9e4f, #3b82c4, #e8831a, #f5c842); }
+
+.as-hero { text-align: center; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 2px solid #f8faf6; }
+.as-badge { display: inline-flex; align-items: center; gap: 7px; background: #eaf7ec; color: #2a7a3b; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(58,158,79,.15); }
+.as-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #3a9e4f; display: inline-block; }
+.as-titulo { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.as-titulo-sub { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; font-style: italic; color: #3a9e4f; line-height: 1.1; margin-bottom: 24px; }
+.as-desc { font-size: 1rem; color: #4a5240; line-height: 1.8; max-width: 600px; margin: 0 auto; }
+
+.as-info-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.as-info-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; background: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+.as-info-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.as-info-top { display: flex; align-items: center; gap: 12px; }
+.as-info-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+.as-info-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; }
+.as-info-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.68; }
+
+.as-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 36px 0; }
+
+.as-redaccion-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+.as-redaccion-badge { display: inline-flex; align-items: center; gap: 6px; background: #fffbea; color: #7a5c00; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(245,200,66,.3); }
+.as-redaccion-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.2; }
+.as-redaccion-titulo em { font-style: italic; color: #e8831a; }
+
+.as-cita { background: #eaf7ec; border-left: 4px solid #3a9e4f; border-radius: 0 12px 12px 0; padding: 20px 24px; margin-bottom: 24px; }
+.as-cita-texto { font-family: 'Fraunces', serif; font-size: clamp(1rem, 2vw, 1.25rem); font-style: italic; color: #2a7a3b; line-height: 1.65; }
+.as-cita-autor { font-size: 0.78rem; font-weight: 700; color: #3a9e4f; margin-top: 10px; display: block; letter-spacing: 0.05em; }
+
+.as-redaccion-body { background: #f8faf6; border-radius: 14px; border: 1.5px solid rgba(26,33,18,.08); padding: 28px 28px; }
+.as-parrafo { font-size: 0.9rem; color: #4a5240; line-height: 1.85; margin-bottom: 16px; }
+.as-parrafo-destacado { font-size: 0.9rem; color: #1a2112; font-weight: 700; line-height: 1.85; margin-bottom: 16px; }
+
+.as-firma { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding-top: 20px; border-top: 1.5px solid rgba(26,33,18,.08); }
+.as-firma-avatar { width: 44px; height: 44px; border-radius: 50%; background: #e8f2fc; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; border: 2px solid rgba(59,130,196,.2); }
+.as-firma-nombre { font-size: 0.88rem; font-weight: 800; color: #1a2112; margin-bottom: 2px; }
+.as-firma-desc { font-size: 0.75rem; color: #8a9480; }
+
+@media (max-width: 820px) {
+  .as-info-grid { grid-template-columns: 1fr; }
+  .as-section { padding: 44px 5% 44px; border-radius: 14px; }
+  .as-redaccion-body { padding: 20px 18px; }
+}
+@media (max-width: 500px) {
+  .as-section { padding: 36px 5% 36px; }
+  .as-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="as-section">
+
+  <div class="as-hero">
+    <div class="as-badge"><span class="as-badge-dot"></span>&nbsp;CEIP El Tejar · Fuengirola</div>
+    <h1 class="as-titulo">Así somos</h1>
+    <p class="as-titulo-sub">¡Solo faltas tú!</p>
+    <p class="as-desc">Un colegio público en el corazón de Fuengirola, donde cada niño y niña encuentra su lugar para crecer, aprender y crear recuerdos que duran toda la vida.</p>
+  </div>
+
+  <div class="as-info-grid">
+    <div class="as-info-card" style="border-color:rgba(59,130,196,.15);">
+      <div class="as-info-top">
+        <div class="as-info-icon" style="background:#e8f2fc;">📍</div>
+        <span class="as-info-titulo">Ubicación privilegiada</span>
+      </div>
+      <p class="as-info-texto">Situados en Fuengirola (Málaga), a pocos metros del Mar Mediterráneo, con el Castillo Sohail al oeste y la desembocadura del Río Fuengirola muy cerca.</p>
+    </div>
+    <div class="as-info-card" style="border-color:rgba(58,158,79,.15);">
+      <div class="as-info-top">
+        <div class="as-info-icon" style="background:#eaf7ec;">🏗️</div>
+        <span class="as-info-titulo">Nuestras instalaciones</span>
+      </div>
+      <p class="as-info-texto">Dos edificios: el principal para Primaria y uno específico para Infantil, con amplios patios, pista polideportiva y zonas verdes que dan aire limpio a todo el barrio.</p>
+    </div>
+    <div class="as-info-card" style="border-color:rgba(232,131,26,.18);">
+      <div class="as-info-top">
+        <div class="as-info-icon" style="background:#fff3e4;">🌍</div>
+        <span class="as-info-titulo">Centro multicultural</span>
+      </div>
+      <p class="as-info-texto">Nuestro alumnado representa una gran diversidad de nacionalidades y culturas. Esta riqueza es uno de nuestros mayores valores y la trabajamos cada día en el aula.</p>
+    </div>
+  </div>
+
+  <div class="as-divisor"></div>
+
+  <div class="as-redaccion-header">
+    <div class="as-redaccion-badge">✏️ Voz del alumnado</div>
+    <h2 class="as-redaccion-titulo">El Tejar y <em>su entorno</em></h2>
+  </div>
+
+  <div class="as-cita">
+    <p class="as-cita-texto">"Mi colegio ocupa la parte central de la imagen, como no, la más importante. Parece un pulmón de la ciudad, porque cuenta con muchos árboles que la renuevan con aire limpio."</p>
+    <span class="as-cita-autor">— Zayd Dsouli, alumno de 6º de Primaria</span>
+  </div>
+
+  <div class="as-redaccion-body">
+    <p class="as-parrafo">En este paisaje urbano se ve una ciudad llamada Fuengirola. Dentro del conjunto, se puede observar un cielo muy claro y apenas sin nubes en un maravilloso día de sol. Las aves pasan el tiempo volando por encima del mar, que con sus tonos azules atrae a los bañistas y a los pesqueros para capturar algunos peces en sus aguas cristalinas. Al fondo se aprecian unas montañas con forma triangular que invitan a dar un paseo en ellas.</p>
+    <p class="as-parrafo">A vista de pájaro, el cielo se aprecia claro y apenas sin nubes, en un maravilloso día de sol que disfruto con mis amigos a la hora del recreo. Cuando está triste se pone gris y las nubes llorando no nos dejan salir al patio y nos quedamos en clase con nuestros compañeros. En los atardeceres, el maravilloso cielo toma tonos morados, anaranjados y azulados, enamorando a la gente e invitándola a presenciar su anochecer en el mar.</p>
+    <p class="as-parrafo">Al fondo se pueden ver unas montañas que protegen a la ciudad como si fuera su hija y que, curiosamente, parecen jorobas de camellos que invitan a pasar el día en familia o con amigos, disfrutando de sus maravillosos parajes y paseando por sus senderos, en los que se pueden encontrar numerosos animales y diversidad de plantas que viven en equilibrio.</p>
+    <p class="as-parrafo">En una de esas casas vivo yo. A diario me levanto temprano y, mientras hago mis rutinas, empiezo a escuchar el bullicio que se forma cuando los más pequeños llegan a la guardería que hay junto a mi casa. Cuando me pongo los zapatos salgo con mi mochila a la calle y tomo camino a la escuela. En el trayecto, coincido con otros niños y niñas que también acuden alegremente a sus colegios.</p>
+    <p class="as-parrafo-destacado">Ha llegado mi último curso en El Tejar, del que me llevo numerosos recuerdos. He pasado muchos años de mi vida en mi Colegio y he vivido experiencias que nunca olvidaré. Lo echaré de menos, por eso voy a disfrutar mi último año al máximo y, quién sabe, quizá alguno de nosotros se convierta en la primera persona en llegar a Marte.</p>
+    <div class="as-firma">
+      <div class="as-firma-avatar">✏️</div>
+      <div>
+        <p class="as-firma-nombre">Zayd Dsouli</p>
+        <p class="as-firma-desc">Alumno de 6º de Primaria · CEIP El Tejar</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
