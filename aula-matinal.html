@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula Matinal - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.am-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.am-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #f5c842, #e8831a, #e8458a, #3b82c4); }
+
+.am-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.am-badge { display: inline-flex; align-items: center; gap: 7px; background: #fffbea; color: #7a5c00; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(245,200,66,.3); }
+.am-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #f5c842; display: inline-block; }
+.am-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.am-titulo em { font-style: italic; color: #e8831a; }
+.am-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 620px; margin: 0 auto; }
+
+.am-horario-box { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; background: #fffbea; border: 2px solid rgba(245,200,66,.35); border-radius: 16px; padding: 28px 32px; margin-bottom: 36px; text-align: center; }
+.am-horario-icon { font-size: 2.4rem; flex-shrink: 0; }
+.am-horario-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.13em; color: #a07000; margin-bottom: 4px; }
+.am-horario-hora { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: #1a2112; line-height: 1; margin-bottom: 4px; }
+.am-horario-dias { font-size: 0.85rem; font-weight: 700; color: #4a5240; }
+
+.am-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.am-sec-titulo em { font-style: italic; color: #e8831a; }
+
+.am-info-box { border-left: 4px solid #e8831a; border-radius: 0 14px 14px 0; background: #fff3e4; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.am-info-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.am-info-titulo { font-size: 0.9rem; font-weight: 800; color: #7a3a00; margin-bottom: 6px; }
+.am-info-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.am-activ-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.am-activ { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 13px; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+.am-activ:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+.am-activ-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
+.am-activ-titulo { font-size: 0.85rem; font-weight: 800; color: #1a2112; }
+.am-activ-texto { font-size: 0.78rem; color: #4a5240; line-height: 1.6; }
+
+.am-normas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+.am-norma { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; border-radius: 11px; border: 1.5px solid rgba(26,33,18,.08); background: #f8faf6; transition: border-color 0.18s; }
+.am-norma:hover { border-color: rgba(58,158,79,.25); }
+.am-norma-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.am-norma-texto { font-size: 0.83rem; color: #4a5240; line-height: 1.65; }
+
+.am-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.am-docs { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.am-doc { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.am-doc:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.08); border-color: rgba(59,130,196,.25); }
+.am-doc-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.am-doc-tipo { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.am-doc-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; margin-bottom: 4px; }
+.am-doc-desc { font-size: 0.76rem; color: #4a5240; line-height: 1.5; }
+
+.am-web { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-radius: 12px; border: 1.5px solid rgba(232,69,138,.2); background: #fdeef6; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 36px; }
+.am-web:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(232,69,138,.1); }
+.am-web-icon { font-size: 1.4rem; flex-shrink: 0; }
+.am-web-titulo { font-size: 0.88rem; font-weight: 800; color: #7a1a4a; margin-bottom: 2px; }
+.am-web-desc { font-size: 0.75rem; color: #4a5240; }
+.am-web-arrow { margin-left: auto; font-size: 1rem; color: #e8458a; flex-shrink: 0; }
+
+.am-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.am-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.am-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(232,131,26,.25); }
+.am-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.am-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.am-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.am-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .am-activ-grid { grid-template-columns: 1fr 1fr; }
+  .am-docs { grid-template-columns: 1fr; }
+  .am-nav { grid-template-columns: 1fr; }
+  .am-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .am-activ-grid { grid-template-columns: 1fr; }
+  .am-section { padding: 36px 5% 36px; }
+  .am-info-box { flex-direction: column; gap: 10px; }
+  .am-hero { margin-bottom: 32px; padding-bottom: 28px; }
+  .am-horario-box { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<section class="am-section">
+
+  <div class="am-hero">
+    <div class="am-badge"><span class="am-badge-dot"></span>&nbsp;Plan de Apertura · CEIP El Tejar</div>
+    <h1 class="am-titulo">Aula <em>Matinal</em></h1>
+    <p class="am-desc">Servicio promovido por la Junta de Andalucía para facilitar la conciliación familiar. Atención educativa y lúdica para el alumnado antes del inicio de la jornada escolar.</p>
+  </div>
+
+  <div class="am-horario-box">
+    <div class="am-horario-icon">🌅</div>
+    <div>
+      <p class="am-horario-label">Horario del servicio</p>
+      <p class="am-horario-hora">7:30 – 9:00 h</p>
+      <p class="am-horario-dias">De lunes a viernes · Todo el curso escolar</p>
+    </div>
+  </div>
+
+  <div class="am-info-box">
+    <div class="am-info-icon">ℹ️</div>
+    <div>
+      <p class="am-info-titulo">¿Qué es el Aula Matinal?</p>
+      <p class="am-info-texto">Actividad promovida por la Junta de Andalucía para dar respuesta a las exigencias laborales de los padres y madres que necesitan delegar el cuidado de sus hijos e hijas antes del inicio de la jornada escolar. La atención se realiza por personal cualificado y abarca vigilancia, atención educativa y actividades adaptadas a la edad y desarrollo de cada alumno.</p>
+    </div>
+  </div>
+
+  <h2 class="am-sec-titulo">Actividades que <em>realizamos</em></h2>
+  <div class="am-activ-grid">
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#fdeef6;">🎨</div>
+      <p class="am-activ-titulo">Actividades plásticas</p>
+      <p class="am-activ-texto">Pintura, manualidades y expresión artística adaptadas a cada edad y nivel educativo.</p>
+    </div>
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#fffbea;">✏️</div>
+      <p class="am-activ-titulo">Dibujo libre</p>
+      <p class="am-activ-texto">Espacio para la expresión creativa y el desarrollo de la motricidad fina a través del dibujo.</p>
+    </div>
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#e8f2fc;">📖</div>
+      <p class="am-activ-titulo">Lectura</p>
+      <p class="am-activ-texto">Fomento del hábito lector con cuentos, libros ilustrados y lecturas en voz alta.</p>
+    </div>
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#eaf7ec;">🏃</div>
+      <p class="am-activ-titulo">Psicomotricidad</p>
+      <p class="am-activ-texto">Juegos de movimiento que trabajan el desarrollo motor, la coordinación y el equilibrio.</p>
+    </div>
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#fff3e4;">🎲</div>
+      <p class="am-activ-titulo">Juegos populares</p>
+      <p class="am-activ-texto">Juegos tradicionales andaluces que favorecen la socialización y el trabajo en equipo.</p>
+    </div>
+    <div class="am-activ">
+      <div class="am-activ-icon" style="background:#fdeef6;">😊</div>
+      <p class="am-activ-titulo">Atención individualizada</p>
+      <p class="am-activ-texto">Personal cualificado que atiende las necesidades específicas de cada alumno y alumna.</p>
+    </div>
+  </div>
+
+  <div class="am-divisor"></div>
+
+  <h2 class="am-sec-titulo">Protocolo y <em>funcionamiento</em></h2>
+  <div class="am-normas">
+    <div class="am-norma">
+      <span class="am-norma-icon">👨‍🏫</span>
+      <p class="am-norma-texto">El alumnado participante será recogido por el profesorado y acompañado en todo momento a los espacios destinados para incorporarse a la jornada escolar.</p>
+    </div>
+    <div class="am-norma">
+      <span class="am-norma-icon">🧴</span>
+      <p class="am-norma-texto">En todas las actividades se aplican las medidas de higiene: distancia social, higiene de manos y uso restringido de espacios.</p>
+    </div>
+    <div class="am-norma">
+      <span class="am-norma-icon">👷</span>
+      <p class="am-norma-texto">La atención se realiza por personal cualificado con formación específica en educación y cuidado de menores.</p>
+    </div>
+    <div class="am-norma">
+      <span class="am-norma-icon">📅</span>
+      <p class="am-norma-texto">El servicio está disponible todos los días lectivos, de lunes a viernes, durante todo el curso escolar.</p>
+    </div>
+  </div>
+
+  <div class="am-divisor"></div>
+
+  <h2 class="am-sec-titulo">Documentos para <em>solicitar el servicio</em></h2>
+  <div class="am-docs">
+    <a href="https://blogsaverroes.juntadeandalucia.es/ceipsanmiguelnerja/files/2020/06/Anexo_II_Inscripcion_en_los_Servicios_de_AM_CE_y_AAEX.pdf" target="_blank" rel="noopener" class="am-doc">
+      <div class="am-doc-icon" style="background:#e8f2fc;">📄</div>
+      <div>
+        <p class="am-doc-tipo" style="color:#3b82c4;">Descarga PDF</p>
+        <p class="am-doc-titulo">Impreso de Admisión</p>
+        <p class="am-doc-desc">Solicitud de inscripción en el servicio de Aula Matinal, Comedor y Actividades Extraescolares.</p>
+      </div>
+    </a>
+    <a href="https://drive.google.com/file/d/1NfLpOr5b2qOjmQ8ct_SqBDpv-o5zuGCa/view?usp=sharing" target="_blank" rel="noopener" class="am-doc">
+      <div class="am-doc-icon" style="background:#eaf7ec;">📋</div>
+      <div>
+        <p class="am-doc-tipo" style="color:#3a9e4f;">Descarga PDF</p>
+        <p class="am-doc-titulo">Impreso de Bonificación</p>
+        <p class="am-doc-desc">Solicitud de bonificación o reducción de la tarifa del servicio según situación familiar.</p>
+      </div>
+    </a>
+  </div>
+
+  <a href="http://aulamatinaleltejar.simplesite.com/" target="_blank" rel="noopener" class="am-web">
+    <span class="am-web-icon">🌐</span>
+    <div>
+      <p class="am-web-titulo">Sigue nuestras actividades en la web del Aula Matinal</p>
+      <p class="am-web-desc">aulamatinaleltejar.simplesite.com — Fotos, actividades y novedades del servicio</p>
+    </div>
+    <span class="am-web-arrow">→</span>
+  </a>
+
+  <div class="am-divisor"></div>
+
+  <h2 class="am-sec-titulo">Otros <em>servicios</em></h2>
+  <div class="am-nav">
+    <a href="comedor.html" class="am-nav-card">
+      <div class="am-nav-icon" style="background:#fff3e4;">🍽️</div>
+      <div>
+        <p class="am-nav-label">Plan de Apertura</p>
+        <p class="am-nav-titulo">Comedor Escolar</p>
+      </div>
+      <span class="am-nav-arrow">→</span>
+    </a>
+    <a href="extraescolares.html" class="am-nav-card">
+      <div class="am-nav-icon" style="background:#eaf7ec;">⚽</div>
+      <div>
+        <p class="am-nav-label">Plan de Apertura</p>
+        <p class="am-nav-titulo">Actividades Extraescolares</p>
+      </div>
+      <span class="am-nav-arrow">→</span>
+    </a>
+    <a href="ampa.html" class="am-nav-card">
+      <div class="am-nav-icon" style="background:#e8f2fc;">👨‍👩‍👧</div>
+      <div>
+        <p class="am-nav-label">Asociación</p>
+        <p class="am-nav-titulo">AMPA</p>
+      </div>
+      <span class="am-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
