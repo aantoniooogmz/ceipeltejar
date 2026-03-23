@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2º Ciclo de Educación Infantil - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.ei-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.ei-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #f5c842, #3a9e4f, #3b82c4, #e8458a); }
+
+.ei-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.ei-badge { display: inline-flex; align-items: center; gap: 7px; background: #fffbea; color: #7a5c00; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(245,200,66,.3); }
+.ei-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #f5c842; display: inline-block; }
+.ei-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.ei-titulo em { font-style: italic; color: #3a9e4f; }
+.ei-subtitulo { font-size: clamp(1rem, 2vw, 1.15rem); color: #8a9480; font-weight: 600; margin-bottom: 20px; }
+.ei-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 640px; margin: 0 auto; }
+
+.ei-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.ei-sec-titulo em { font-style: italic; color: #3a9e4f; }
+
+.ei-ciclos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px; }
+.ei-ciclo { border-radius: 14px; padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; border: 1.5px solid rgba(26,33,18,.08); transition: transform 0.2s, box-shadow 0.2s; }
+.ei-ciclo:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.ei-ciclo-top { display: flex; align-items: center; gap: 12px; }
+.ei-ciclo-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.ei-ciclo-num { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+.ei-ciclo-titulo { font-size: 0.92rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ei-ciclo-edad { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; align-self: flex-start; }
+.ei-ciclo-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.65; }
+.ei-ciclo-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.67rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; padding: 3px 10px; border-radius: 100px; align-self: flex-start; }
+
+.ei-info-box { border-left: 4px solid #3a9e4f; border-radius: 0 14px 14px 0; background: #eaf7ec; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.ei-info-box-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.ei-info-box-titulo { font-size: 0.9rem; font-weight: 800; color: #2a7a3b; margin-bottom: 6px; }
+.ei-info-box-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.ei-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.ei-areas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.ei-area { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 13px; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+.ei-area:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+.ei-area-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
+.ei-area-titulo { font-size: 0.86rem; font-weight: 800; color: #1a2112; line-height: 1.25; }
+.ei-area-texto { font-size: 0.78rem; color: #4a5240; line-height: 1.62; }
+
+.ei-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.ei-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.ei-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(58,158,79,.25); }
+.ei-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.ei-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.ei-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ei-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .ei-ciclos { grid-template-columns: 1fr; }
+  .ei-areas { grid-template-columns: 1fr 1fr; }
+  .ei-nav { grid-template-columns: 1fr; }
+  .ei-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .ei-areas { grid-template-columns: 1fr; }
+  .ei-section { padding: 36px 5% 36px; }
+  .ei-info-box { flex-direction: column; gap: 10px; }
+  .ei-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="ei-section">
+
+  <div class="ei-hero">
+    <div class="ei-badge"><span class="ei-badge-dot"></span>&nbsp;Enseñanzas · CEIP El Tejar</div>
+    <h1 class="ei-titulo">2º Ciclo de<br><em>Educación Infantil</em></h1>
+    <p class="ei-subtitulo">3 a 6 años · Gratuito · Voluntario</p>
+    <p class="ei-desc">La Educación Infantil contribuye al desarrollo físico, afectivo, social e intelectual de los más pequeños. En El Tejar, esta etapa es el primer gran paso de un camino lleno de descubrimientos.</p>
+  </div>
+
+  <h2 class="ei-sec-titulo">Los dos <em>ciclos</em></h2>
+  <div class="ei-ciclos">
+
+    <div class="ei-ciclo" style="background:#e8f2fc;border-color:rgba(59,130,196,.18);">
+      <div class="ei-ciclo-top">
+        <div class="ei-ciclo-icon" style="background:rgba(59,130,196,.15);">👶</div>
+        <div>
+          <p class="ei-ciclo-num" style="color:#3b82c4;">Primer ciclo</p>
+          <p class="ei-ciclo-titulo">De 0 a 3 años</p>
+        </div>
+      </div>
+      <span class="ei-ciclo-edad" style="background:rgba(59,130,196,.12);color:#1a4a80;">🎂 0 a 3 años</span>
+      <p class="ei-ciclo-texto">Atención a las necesidades básicas, desarrollo sensorial y primeros vínculos afectivos. Cubre desde el nacimiento hasta los tres años de edad.</p>
+      <span class="ei-ciclo-tag" style="background:rgba(59,130,196,.15);color:#1a4a80;">No impartido en El Tejar</span>
+    </div>
+
+    <div class="ei-ciclo" style="background:#eaf7ec;border-color:rgba(58,158,79,.2);">
+      <div class="ei-ciclo-top">
+        <div class="ei-ciclo-icon" style="background:rgba(58,158,79,.15);">🧒</div>
+        <div>
+          <p class="ei-ciclo-num" style="color:#3a9e4f;">Segundo ciclo</p>
+          <p class="ei-ciclo-titulo">De 3 a 6 años</p>
+        </div>
+      </div>
+      <span class="ei-ciclo-edad" style="background:rgba(58,158,79,.12);color:#2a7a3b;">🎂 3 a 6 años</span>
+      <p class="ei-ciclo-texto">Gratuito y generalizado en toda España. Prácticamente el 100% del alumnado de 3 a 6 años accede al colegio en esta etapa, sentando las bases del aprendizaje futuro.</p>
+      <span class="ei-ciclo-tag" style="background:rgba(58,158,79,.15);color:#2a7a3b;">✓ Impartido en El Tejar</span>
+    </div>
+
+  </div>
+
+  <div class="ei-info-box">
+    <div class="ei-info-box-icon">🌟</div>
+    <div>
+      <p class="ei-info-box-titulo">¿Por qué es tan importante la escolarización temprana?</p>
+      <p class="ei-info-box-texto">La escolarización temprana se considera un gran logro educativo que incide positivamente en la mejora del rendimiento escolar futuro. En esta etapa, los niños y niñas desarrollan habilidades sociales, lingüísticas y cognitivas fundamentales que les acompañarán durante toda su vida académica y personal.</p>
+    </div>
+  </div>
+
+  <div class="ei-divisor"></div>
+
+  <h2 class="ei-sec-titulo">Áreas de <em>desarrollo</em></h2>
+  <div class="ei-areas">
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#fdeef6;">❤️</div>
+      <p class="ei-area-titulo">Desarrollo afectivo</p>
+      <p class="ei-area-texto">Construimos vínculos seguros y ayudamos a cada niño y niña a gestionar sus emociones y sentimientos de forma saludable.</p>
+    </div>
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#fff3e4;">🏃</div>
+      <p class="ei-area-titulo">Movimiento y cuerpo</p>
+      <p class="ei-area-texto">Trabajamos el movimiento, los hábitos de control corporal y la psicomotricidad fina y gruesa a través del juego y la exploración.</p>
+    </div>
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#e8f2fc;">🗣️</div>
+      <p class="ei-area-titulo">Comunicación y lenguaje</p>
+      <p class="ei-area-texto">Estimulamos la expresión oral, la comprensión lectora inicial y las primeras manifestaciones del lenguaje escrito y artístico.</p>
+    </div>
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#eaf7ec;">🤝</div>
+      <p class="ei-area-titulo">Convivencia y relación social</p>
+      <p class="ei-area-texto">Aprendemos a relacionarnos con los demás, a respetar las normas básicas de convivencia y a trabajar en equipo desde los primeros años.</p>
+    </div>
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#fffbea;">🔍</div>
+      <p class="ei-area-titulo">Descubrimiento del entorno</p>
+      <p class="ei-area-texto">Fomentamos la curiosidad por el mundo físico y social, explorando el entorno cercano mediante proyectos, experimentos y salidas.</p>
+    </div>
+
+    <div class="ei-area">
+      <div class="ei-area-icon" style="background:#fdeef6;">😊</div>
+      <p class="ei-area-titulo">Autonomía personal</p>
+      <p class="ei-area-texto">Propiciamos que cada niño y niña construya una imagen positiva de sí mismo y adquiera progresiva autonomía en sus rutinas diarias.</p>
+    </div>
+
+  </div>
+
+  <div class="ei-divisor"></div>
+
+  <h2 class="ei-sec-titulo">Otras <em>enseñanzas</em></h2>
+  <div class="ei-nav">
+    <a href="primaria1.html" class="ei-nav-card">
+      <div class="ei-nav-icon" style="background:#eaf7ec;">📗</div>
+      <div>
+        <p class="ei-nav-label">Primaria</p>
+        <p class="ei-nav-titulo">1º Ciclo de Ed. Primaria</p>
+      </div>
+      <span class="ei-nav-arrow">→</span>
+    </a>
+    <a href="primaria2.html" class="ei-nav-card">
+      <div class="ei-nav-icon" style="background:#e8f2fc;">📘</div>
+      <div>
+        <p class="ei-nav-label">Primaria</p>
+        <p class="ei-nav-titulo">2º Ciclo de Ed. Primaria</p>
+      </div>
+      <span class="ei-nav-arrow">→</span>
+    </a>
+    <a href="primaria3.html" class="ei-nav-card">
+      <div class="ei-nav-icon" style="background:#fff3e4;">📙</div>
+      <div>
+        <p class="ei-nav-label">Primaria</p>
+        <p class="ei-nav-titulo">3º Ciclo de Ed. Primaria</p>
+      </div>
+      <span class="ei-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
