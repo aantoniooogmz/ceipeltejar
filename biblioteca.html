@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.bi-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.bi-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #f5c842, #e8831a, #7c3aed, #3b82c4); }
+
+.bi-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.bi-badge { display: inline-flex; align-items: center; gap: 7px; background: #fffbea; color: #7a5c00; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(245,200,66,.3); }
+.bi-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #f5c842; display: inline-block; }
+.bi-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.bi-titulo em { font-style: italic; color: #e8831a; }
+.bi-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 620px; margin: 0 auto; }
+
+.bi-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.bi-sec-titulo em { font-style: italic; color: #e8831a; }
+
+.bi-funciones { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.bi-func { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.bi-func:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.bi-func-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+.bi-func-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; }
+.bi-func-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.68; }
+
+.bi-info-box { border-left: 4px solid #7c3aed; border-radius: 0 14px 14px 0; background: #f3eeff; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.bi-info-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.bi-info-titulo { font-size: 0.9rem; font-weight: 800; color: #4a1a9a; margin-bottom: 6px; }
+.bi-info-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.bi-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.bi-datos { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 24px 24px; margin-bottom: 36px; }
+.bi-datos-titulo { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #8a9480; margin-bottom: 16px; }
+.bi-datos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.bi-dato-item { display: flex; flex-direction: column; gap: 3px; }
+.bi-dato-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #8a9480; }
+.bi-dato-valor { font-size: 0.88rem; font-weight: 700; color: #1a2112; }
+.bi-dato-valor a { color: #3b82c4 !important; text-decoration: none; }
+.bi-dato-valor a:hover { text-decoration: underline; }
+
+.bi-junta { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-radius: 12px; border: 1.5px solid rgba(59,130,196,.2); background: #e8f2fc; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 36px; }
+.bi-junta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(59,130,196,.15); }
+.bi-junta-icon { font-size: 1.4rem; flex-shrink: 0; }
+.bi-junta-titulo { font-size: 0.88rem; font-weight: 800; color: #1a5a9a; margin-bottom: 2px; }
+.bi-junta-desc { font-size: 0.75rem; color: #4a5240; }
+.bi-junta-arrow { margin-left: auto; font-size: 1rem; color: #3b82c4; flex-shrink: 0; }
+
+.bi-enlaces { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.bi-enlace { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.bi-enlace:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,.08); border-color: rgba(59,130,196,.25); }
+.bi-enlace-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.bi-enlace-titulo { font-size: 0.92rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.bi-enlace-desc { font-size: 0.78rem; color: #4a5240; line-height: 1.6; flex: 1; }
+.bi-enlace-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 700; padding: 7px 14px; border-radius: 8px; align-self: flex-start; transition: background 0.15s; }
+
+@media (max-width: 820px) {
+  .bi-funciones, .bi-enlaces { grid-template-columns: 1fr; }
+  .bi-datos-grid { grid-template-columns: 1fr; }
+  .bi-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .bi-section { padding: 36px 5% 36px; }
+  .bi-info-box { flex-direction: column; gap: 10px; }
+  .bi-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="bi-section">
+
+  <div class="bi-hero">
+    <div class="bi-badge"><span class="bi-badge-dot"></span>&nbsp;Más servicios · CEIP El Tejar</div>
+    <h1 class="bi-titulo">Biblioteca <em>escolar</em></h1>
+    <p class="bi-desc">Un espacio físico y digital abierto a toda la comunidad educativa. Centro de recursos para la enseñanza y el aprendizaje, y factor clave de compensación social e inclusión digital.</p>
+  </div>
+
+  <h2 class="bi-sec-titulo">¿Qué hace nuestra <em>biblioteca?</em></h2>
+  <div class="bi-funciones">
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#fffbea;">📚</div>
+      <p class="bi-func-titulo">Centro de recursos</p>
+      <p class="bi-func-texto">Ofrece acceso a materiales informativos actualizados, diversos y suficientes para todas las áreas del currículo, apoyando los planes y proyectos del centro.</p>
+    </div>
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#e8f2fc;">🔍</div>
+      <p class="bi-func-titulo">Alfabetización informacional</p>
+      <p class="bi-func-texto">Articula programas de alfabetización informacional y digital para que el alumnado aprenda a buscar, evaluar y usar la información de forma crítica y responsable.</p>
+    </div>
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#eaf7ec;">📖</div>
+      <p class="bi-func-titulo">Fomento de la lectura</p>
+      <p class="bi-func-texto">Desarrolla programas específicos para despertar y consolidar el hábito lector en todas las etapas, con actividades adaptadas a cada edad y nivel.</p>
+    </div>
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#f3eeff;">🌍</div>
+      <p class="bi-func-titulo">Compensación social</p>
+      <p class="bi-func-texto">Posibilita el acceso a recursos informativos y culturales a quienes carecen de ellos, contribuyendo a paliar la brecha digital y social del entorno.</p>
+    </div>
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#fff3e4;">🤝</div>
+      <p class="bi-func-titulo">Colaboración con familias</p>
+      <p class="bi-func-texto">Espacio social abierto para eventos culturales, profesionales y educativos, donde la colaboración con las familias y entidades del entorno cobra especial relevancia.</p>
+    </div>
+
+    <div class="bi-func">
+      <div class="bi-func-icon" style="background:#e8f2fc;">💻</div>
+      <p class="bi-func-titulo">Espacio digital</p>
+      <p class="bi-func-texto">Además del espacio físico, la biblioteca funciona como recurso digital, garantizando el acceso a la información y la cultura más allá de las paredes del centro.</p>
+    </div>
+
+  </div>
+
+  <div class="bi-info-box">
+    <div class="bi-info-icon">💡</div>
+    <div>
+      <p class="bi-info-titulo">Biblioteca escolar de Andalucía</p>
+      <p class="bi-info-texto">En la sociedad de la información y el conocimiento, las bibliotecas escolares se convierten en centros de recursos esenciales para la enseñanza y el aprendizaje. Deben atender la diversidad del alumnado y ser espacios abiertos a toda la comunidad educativa.</p>
+    </div>
+  </div>
+
+  <div class="bi-divisor"></div>
+
+  <h2 class="bi-sec-titulo">Datos del <em>centro</em></h2>
+  <div class="bi-datos">
+    <p class="bi-datos-titulo">📋 Ficha identificativa</p>
+    <div class="bi-datos-grid">
+      <div class="bi-dato-item">
+        <span class="bi-dato-label">Nombre</span>
+        <span class="bi-dato-valor">CEIP El Tejar</span>
+      </div>
+      <div class="bi-dato-item">
+        <span class="bi-dato-label">Código de centro</span>
+        <span class="bi-dato-valor">29009651</span>
+      </div>
+      <div class="bi-dato-item">
+        <span class="bi-dato-label">Correo electrónico</span>
+        <span class="bi-dato-valor"><a href="mailto:29009651.edu@juntadeandalucia.es">29009651.edu@juntadeandalucia.es</a></span>
+      </div>
+      <div class="bi-dato-item">
+        <span class="bi-dato-label">Localidad</span>
+        <span class="bi-dato-valor">Fuengirola, Málaga</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="bi-sec-titulo">Biblioteca escolar <em>de Andalucía</em></h2>
+  <a href="https://www.juntadeandalucia.es/educacion/webportal/web/lecturas-y-bibliotecas-escolares" target="_blank" rel="noopener" class="bi-junta">
+    <span class="bi-junta-icon">🏛️</span>
+    <div>
+      <p class="bi-junta-titulo">Portal de Bibliotecas Escolares de Andalucía</p>
+      <p class="bi-junta-desc">Junta de Andalucía — Consejería de Desarrollo Educativo y Formación Profesional</p>
+    </div>
+    <span class="bi-junta-arrow">→</span>
+  </a>
+
+  <div class="bi-divisor"></div>
+
+  <h2 class="bi-sec-titulo">Enlaces <em>de interés</em></h2>
+  <div class="bi-enlaces">
+
+    <a href="https://www.juntadeandalucia.es/educacion/portalseneca/web/seneca/inicio" target="_blank" rel="noopener" class="bi-enlace">
+      <div class="bi-enlace-icon" style="background:#e8f2fc;">🎓</div>
+      <p class="bi-enlace-titulo">Séneca</p>
+      <p class="bi-enlace-desc">Portal de gestión educativa de la Junta de Andalucía para centros, docentes y administración.</p>
+      <span class="bi-enlace-btn" style="background:#e8f2fc;color:#1a5a9a;">Acceder →</span>
+    </a>
+
+    <a href="https://www.juntadeandalucia.es/educacion/portalseneca/web/pasen/inicio" target="_blank" rel="noopener" class="bi-enlace">
+      <div class="bi-enlace-icon" style="background:#eaf7ec;">👨‍👩‍👧</div>
+      <p class="bi-enlace-titulo">Pasen 2.0</p>
+      <p class="bi-enlace-desc">Portal para familias. Consulta notas, faltas, comunicados y toda la información de tu hijo o hija.</p>
+      <span class="bi-enlace-btn" style="background:#eaf7ec;color:#2a7a3b;">Acceder →</span>
+    </a>
+
+    <a href="https://educacionadistancia.juntadeandalucia.es/centros/login/index.php" target="_blank" rel="noopener" class="bi-enlace">
+      <div class="bi-enlace-icon" style="background:#f3eeff;">💻</div>
+      <p class="bi-enlace-titulo">Plataforma de Autoformación</p>
+      <p class="bi-enlace-desc">Educación a distancia de la Junta de Andalucía para formación del profesorado y el alumnado.</p>
+      <span class="bi-enlace-btn" style="background:#f3eeff;color:#4a1a9a;">Acceder →</span>
+    </a>
+
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
