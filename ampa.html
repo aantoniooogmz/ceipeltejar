@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMPA - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.ap-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.ap-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #7c3aed, #3b82c4, #3a9e4f, #f5c842); }
+
+.ap-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.ap-badge { display: inline-flex; align-items: center; gap: 7px; background: #f3eeff; color: #4a1a9a; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(124,58,237,.15); }
+.ap-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #7c3aed; display: inline-block; }
+.ap-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.ap-titulo em { font-style: italic; color: #7c3aed; }
+.ap-titulo-full { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: #8a9480; font-weight: 600; margin-bottom: 20px; }
+.ap-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 620px; margin: 0 auto; }
+
+.ap-cita { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 14px 14px 0; padding: 22px 28px; margin-bottom: 36px; text-align: center; }
+.ap-cita-texto { font-family: 'Fraunces', serif; font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-style: italic; font-weight: 700; color: #4a1a9a; line-height: 1.5; }
+
+.ap-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.ap-sec-titulo em { font-style: italic; color: #7c3aed; }
+
+.ap-hace-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.ap-hace { background: #f8faf6; border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.ap-hace:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.ap-hace-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+.ap-hace-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; }
+.ap-hace-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.68; }
+
+.ap-info-box { border-left: 4px solid #3b82c4; border-radius: 0 14px 14px 0; background: #e8f2fc; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.ap-info-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.ap-info-titulo { font-size: 0.9rem; font-weight: 800; color: #1a5a9a; margin-bottom: 6px; }
+.ap-info-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.ap-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.ap-unete-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.ap-unete { border-radius: 14px; padding: 24px 20px; display: flex; flex-direction: column; gap: 10px; border: 1.5px solid rgba(26,33,18,.08); transition: transform 0.2s, box-shadow 0.2s; }
+.ap-unete:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.ap-unete-top { display: flex; align-items: center; gap: 12px; }
+.ap-unete-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.ap-unete-titulo { font-size: 0.92rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ap-unete-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.68; }
+
+.ap-doc { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; text-decoration: none; background: #fff; margin-bottom: 36px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.ap-doc:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.08); border-color: rgba(59,130,196,.25); }
+.ap-doc-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.ap-doc-tipo { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.ap-doc-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; margin-bottom: 4px; }
+.ap-doc-desc { font-size: 0.76rem; color: #4a5240; line-height: 1.5; }
+
+.ap-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.ap-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.ap-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(124,58,237,.2); }
+.ap-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.ap-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.ap-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ap-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .ap-hace-grid { grid-template-columns: 1fr; }
+  .ap-unete-grid { grid-template-columns: 1fr; }
+  .ap-nav { grid-template-columns: 1fr; }
+  .ap-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .ap-section { padding: 36px 5% 36px; }
+  .ap-info-box { flex-direction: column; gap: 10px; }
+  .ap-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="ap-section">
+
+  <div class="ap-hero">
+    <div class="ap-badge"><span class="ap-badge-dot"></span>&nbsp;Asociación · CEIP El Tejar</div>
+    <h1 class="ap-titulo"><em>AMPA</em></h1>
+    <p class="ap-titulo-full">Asociación de Madres y Padres de Alumnos</p>
+    <p class="ap-desc">Una asociación educativa, democrática y participativa donde las familias se informan sobre la marcha del colegio y participan activamente en la formación escolar y humana de sus hijos e hijas.</p>
+  </div>
+
+  <div class="ap-cita">
+    <p class="ap-cita-texto">"Un mundo diferente no lo hace gente indiferente."</p>
+  </div>
+
+  <h2 class="ap-sec-titulo">¿Qué hace <em>la AMPA?</em></h2>
+  <div class="ap-hace-grid">
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#f3eeff;">📢</div>
+      <p class="ap-hace-titulo">Información y comunicación</p>
+      <p class="ap-hace-texto">Las familias se informan sobre la marcha del colegio, las decisiones del centro y todas las novedades que afectan al alumnado.</p>
+    </div>
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#e8f2fc;">🗣️</div>
+      <p class="ap-hace-titulo">Charlas y debates</p>
+      <p class="ap-hace-texto">Organización de charlas, talleres y debates sobre temas educativos, de salud, convivencia y desarrollo personal de los niños y niñas.</p>
+    </div>
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#eaf7ec;">🎉</div>
+      <p class="ap-hace-titulo">Actividades y eventos</p>
+      <p class="ap-hace-texto">Participación y organización de actividades complementarias, celebraciones y eventos que enriquecen la vida del centro.</p>
+    </div>
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#fffbea;">🤝</div>
+      <p class="ap-hace-titulo">Colaboración con el centro</p>
+      <p class="ap-hace-texto">Coordinación con el equipo directivo y el claustro para mejorar las condiciones educativas y el bienestar de todo el alumnado.</p>
+    </div>
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#fff3e4;">🛡️</div>
+      <p class="ap-hace-titulo">Defensa de los derechos</p>
+      <p class="ap-hace-texto">Representación y defensa de los intereses de las familias y el alumnado ante la dirección del centro y la administración educativa.</p>
+    </div>
+
+    <div class="ap-hace">
+      <div class="ap-hace-icon" style="background:#f3eeff;">💡</div>
+      <p class="ap-hace-titulo">Propuestas de mejora</p>
+      <p class="ap-hace-texto">Canal para que las familias presenten propuestas, sugerencias y proyectos que contribuyan a mejorar la calidad educativa del centro.</p>
+    </div>
+
+  </div>
+
+  <div class="ap-info-box">
+    <div class="ap-info-icon">👨‍👩‍👧</div>
+    <div>
+      <p class="ap-info-titulo">Participar es un derecho y un deber</p>
+      <p class="ap-info-texto">Somos libres de participar o no, pero hemos de acostumbrarnos a hacer frente a las consecuencias de nuestras acciones y omisiones. La libertad es elegir entre diversas opciones tomando decisiones responsables — ayudando a nuestros hijos e hijas en su formación escolar y humana.</p>
+    </div>
+  </div>
+
+  <div class="ap-divisor"></div>
+
+  <h2 class="ap-sec-titulo">¿Por qué <em>unirte?</em></h2>
+  <div class="ap-unete-grid">
+
+    <div class="ap-unete" style="background:#f3eeff;border-color:rgba(124,58,237,.18);">
+      <div class="ap-unete-top">
+        <div class="ap-unete-icon" style="background:rgba(124,58,237,.15);">🌟</div>
+        <p class="ap-unete-titulo">Tu voz importa</p>
+      </div>
+      <p class="ap-unete-texto">Siendo parte de la AMPA tienes voz y voto en las decisiones que afectan a la educación de tus hijos. Tu opinión cuenta y puede cambiar las cosas.</p>
+    </div>
+
+    <div class="ap-unete" style="background:#eaf7ec;border-color:rgba(58,158,79,.18);">
+      <div class="ap-unete-top">
+        <div class="ap-unete-icon" style="background:rgba(58,158,79,.15);">🤝</div>
+        <p class="ap-unete-titulo">Comunidad educativa</p>
+      </div>
+      <p class="ap-unete-texto">Formas parte de una comunidad de familias comprometidas con la educación. Juntos construimos un centro mejor para todos nuestros hijos e hijas.</p>
+    </div>
+
+    <div class="ap-unete" style="background:#e8f2fc;border-color:rgba(59,130,196,.18);">
+      <div class="ap-unete-top">
+        <div class="ap-unete-icon" style="background:rgba(59,130,196,.15);">📚</div>
+        <p class="ap-unete-titulo">Acceso a información</p>
+      </div>
+      <p class="ap-unete-texto">Recibes información privilegiada sobre la marcha del colegio, proyectos, actividades y decisiones antes de que sean públicas.</p>
+    </div>
+
+    <div class="ap-unete" style="background:#fffbea;border-color:rgba(245,200,66,.28);">
+      <div class="ap-unete-top">
+        <div class="ap-unete-icon" style="background:rgba(245,200,66,.18);">🎯</div>
+        <p class="ap-unete-titulo">Mejora real del centro</p>
+      </div>
+      <p class="ap-unete-texto">La AMPA ha conseguido mejoras concretas en el centro a lo largo de los años. Tu participación contribuye directamente al bienestar de tu hijo o hija.</p>
+    </div>
+
+  </div>
+
+  <div class="ap-divisor"></div>
+
+  <h2 class="ap-sec-titulo">Documentos de <em>inscripción</em></h2>
+  <a href="https://blogsaverroes.juntadeandalucia.es/ceipsanmiguelnerja/files/2020/06/Anexo_II_Inscripcion_en_los_Servicios_de_AM_CE_y_AAEX.pdf" target="_blank" rel="noopener" class="ap-doc">
+    <div class="ap-doc-icon" style="background:#f3eeff;">📄</div>
+    <div>
+      <p class="ap-doc-tipo" style="color:#7c3aed;">Descarga PDF</p>
+      <p class="ap-doc-titulo">Impreso de Solicitud de Admisión</p>
+      <p class="ap-doc-desc">Formulario de inscripción en los servicios del centro. Incluye Aula Matinal, Comedor Escolar y Actividades Extraescolares.</p>
+    </div>
+  </a>
+
+  <div class="ap-divisor"></div>
+
+  <h2 class="ap-sec-titulo">Otros <em>servicios</em></h2>
+  <div class="ap-nav">
+    <a href="aula-matinal.html" class="ap-nav-card">
+      <div class="ap-nav-icon" style="background:#fffbea;">🌅</div>
+      <div>
+        <p class="ap-nav-label">Plan de Apertura</p>
+        <p class="ap-nav-titulo">Aula Matinal</p>
+      </div>
+      <span class="ap-nav-arrow">→</span>
+    </a>
+    <a href="comedor.html" class="ap-nav-card">
+      <div class="ap-nav-icon" style="background:#fff3e4;">🍽️</div>
+      <div>
+        <p class="ap-nav-label">Plan de Apertura</p>
+        <p class="ap-nav-titulo">Comedor Escolar</p>
+      </div>
+      <span class="ap-nav-arrow">→</span>
+    </a>
+    <a href="extraescolares.html" class="ap-nav-card">
+      <div class="ap-nav-icon" style="background:#eaf7ec;">⚽</div>
+      <div>
+        <p class="ap-nav-label">Plan de Apertura</p>
+        <p class="ap-nav-titulo">Actividades Extraescolares</p>
+      </div>
+      <span class="ap-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
