@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividades Extraescolares - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.ae-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.ae-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #3a9e4f, #3b82c4, #7c3aed, #e8458a); }
+
+.ae-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.ae-badge { display: inline-flex; align-items: center; gap: 7px; background: #eaf7ec; color: #2a7a3b; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(58,158,79,.15); }
+.ae-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #3a9e4f; display: inline-block; }
+.ae-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.ae-titulo em { font-style: italic; color: #3a9e4f; }
+.ae-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 620px; margin: 0 auto; }
+.ae-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.ae-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; padding: 6px 14px; border-radius: 100px; border: 1.5px solid rgba(26,33,18,.08); }
+
+.ae-horario-box { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; background: #eaf7ec; border: 2px solid rgba(58,158,79,.25); border-radius: 16px; padding: 28px 32px; margin-bottom: 36px; text-align: center; }
+.ae-horario-icon { font-size: 2.4rem; flex-shrink: 0; }
+.ae-horario-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.13em; color: #2a7a3b; margin-bottom: 4px; }
+.ae-horario-hora { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: #1a2112; line-height: 1; margin-bottom: 4px; }
+.ae-horario-dias { font-size: 0.85rem; font-weight: 700; color: #4a5240; }
+
+.ae-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.ae-sec-titulo em { font-style: italic; color: #3a9e4f; }
+
+.ae-activ-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.ae-activ { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; background: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+.ae-activ:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.ae-activ-top { display: flex; align-items: center; gap: 11px; }
+.ae-activ-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+.ae-activ-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ae-activ-texto { font-size: 0.79rem; color: #4a5240; line-height: 1.65; }
+.ae-activ-horario { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; align-self: flex-start; margin-top: 2px; background: #f8faf6; color: #8a9480; border: 1px solid rgba(26,33,18,.08); }
+
+.ae-nota { background: #e8f2fc; border: 1.5px solid rgba(59,130,196,.2); border-radius: 12px; padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; margin-bottom: 36px; }
+.ae-nota-icon { font-size: 1.1rem; flex-shrink: 0; }
+.ae-nota-texto { font-size: 0.82rem; color: #1a5a9a; line-height: 1.65; font-weight: 600; }
+
+.ae-avisos { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+.ae-aviso { display: flex; align-items: flex-start; gap: 12px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid rgba(26,33,18,.08); background: #f8faf6; }
+.ae-aviso-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.ae-aviso-texto { font-size: 0.84rem; color: #4a5240; line-height: 1.65; font-weight: 600; }
+
+.ae-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.ae-docs { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.ae-doc { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.ae-doc:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.08); border-color: rgba(59,130,196,.25); }
+.ae-doc-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.ae-doc-tipo { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.ae-doc-titulo { font-size: 0.9rem; font-weight: 800; color: #1a2112; line-height: 1.25; margin-bottom: 4px; }
+.ae-doc-desc { font-size: 0.76rem; color: #4a5240; line-height: 1.5; }
+
+.ae-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.ae-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.ae-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(58,158,79,.25); }
+.ae-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.ae-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.ae-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.ae-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .ae-activ-grid { grid-template-columns: 1fr; }
+  .ae-docs { grid-template-columns: 1fr; }
+  .ae-nav { grid-template-columns: 1fr; }
+  .ae-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .ae-section { padding: 36px 5% 36px; }
+  .ae-hero { margin-bottom: 32px; padding-bottom: 28px; }
+  .ae-horario-box { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<section class="ae-section">
+
+  <div class="ae-hero">
+    <div class="ae-badge"><span class="ae-badge-dot"></span>&nbsp;Plan de Apertura · CEIP El Tejar</div>
+    <h1 class="ae-titulo">Actividades <em>Extraescolares</em></h1>
+    <p class="ae-desc">Actividades de carácter voluntario para el alumnado, atendidas por personal cualificado y formado específicamente para cada disciplina. No forman parte del proceso de evaluación académica.</p>
+    <div class="ae-pills">
+      <span class="ae-pill" style="background:#eaf7ec;color:#2a7a3b;border-color:rgba(58,158,79,.2);">✓ Voluntarias</span>
+      <span class="ae-pill" style="background:#e8f2fc;color:#1a5a9a;border-color:rgba(59,130,196,.2);">Personal cualificado</span>
+      <span class="ae-pill" style="background:#fffbea;color:#7a5c00;border-color:rgba(245,200,66,.3);">No evaluables</span>
+    </div>
+  </div>
+
+  <div class="ae-horario-box">
+    <div class="ae-horario-icon">⚽</div>
+    <div>
+      <p class="ae-horario-label">Horario del servicio</p>
+      <p class="ae-horario-hora">16:00 – 18:00 h</p>
+      <p class="ae-horario-dias">De lunes a viernes · Tras el horario lectivo y el comedor</p>
+    </div>
+  </div>
+
+  <h2 class="ae-sec-titulo">Actividades <em>ofertadas</em></h2>
+  <!-- Actualiza estas actividades con las del curso actual -->
+  <div class="ae-activ-grid">
+
+    <div class="ae-activ" style="border-color:rgba(58,158,79,.18);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#eaf7ec;">⚽</div>
+        <span class="ae-activ-titulo">Fútbol</span>
+      </div>
+      <p class="ae-activ-texto">Iniciación y práctica del fútbol. Trabajo en equipo, habilidades motrices y valores deportivos.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+    <div class="ae-activ" style="border-color:rgba(59,130,196,.18);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#e8f2fc;">🏊</div>
+        <span class="ae-activ-titulo">Natación</span>
+      </div>
+      <p class="ae-activ-texto">Aprendizaje y perfeccionamiento de la natación con monitores especializados.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+    <div class="ae-activ" style="border-color:rgba(124,58,237,.18);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#f3eeff;">🎨</div>
+        <span class="ae-activ-titulo">Manualidades y plástica</span>
+      </div>
+      <p class="ae-activ-texto">Talleres creativos de expresión artística, manualidades y desarrollo de la creatividad.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+    <div class="ae-activ" style="border-color:rgba(232,69,138,.18);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#fdeef6;">💃</div>
+        <span class="ae-activ-titulo">Danza y expresión corporal</span>
+      </div>
+      <p class="ae-activ-texto">Iniciación a la danza, el ritmo y la expresión corporal como herramientas de comunicación.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+    <div class="ae-activ" style="border-color:rgba(245,200,66,.28);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#fffbea;">🎭</div>
+        <span class="ae-activ-titulo">Teatro</span>
+      </div>
+      <p class="ae-activ-texto">Taller de expresión dramática, memoria, improvisación y trabajo en grupo.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+    <div class="ae-activ" style="border-color:rgba(58,158,79,.18);">
+      <div class="ae-activ-top">
+        <div class="ae-activ-icon" style="background:#eaf7ec;">🎵</div>
+        <span class="ae-activ-titulo">Música</span>
+      </div>
+      <p class="ae-activ-texto">Iniciación musical, ritmo, canto y conocimiento de los instrumentos básicos.</p>
+      <span class="ae-activ-horario">🕓 Consultar horario</span>
+    </div>
+
+  </div>
+
+  <div class="ae-nota">
+    <span class="ae-nota-icon">📅</span>
+    <p class="ae-nota-texto">Consulta el horario completo actualizado de cada actividad en la secretaría del centro o descarga el impreso de admisión para más información sobre días y horarios concretos.</p>
+  </div>
+
+  <div class="ae-divisor"></div>
+
+  <h2 class="ae-sec-titulo">Información <em>importante</em></h2>
+  <div class="ae-avisos">
+    <div class="ae-aviso" style="border-color:rgba(58,158,79,.2);background:#eaf7ec;">
+      <span class="ae-aviso-icon">✅</span>
+      <p class="ae-aviso-texto" style="color:#2a7a3b;">Las actividades extraescolares tienen carácter voluntario y no forman parte del proceso de evaluación del alumnado.</p>
+    </div>
+    <div class="ae-aviso" style="border-color:rgba(245,200,66,.3);background:#fffbea;">
+      <span class="ae-aviso-icon">⚠️</span>
+      <p class="ae-aviso-texto" style="color:#7a5c00;">Solo se bonifica una actividad por alumno o alumna. Recuérdalo a la hora de solicitar la bonificación.</p>
+    </div>
+    <div class="ae-aviso" style="border-color:rgba(59,130,196,.2);background:#e8f2fc;">
+      <span class="ae-aviso-icon">🗓️</span>
+      <p class="ae-aviso-texto" style="color:#1a5a9a;">El horario puede sufrir modificaciones en función del alumnado que se matricule en cada actividad.</p>
+    </div>
+    <div class="ae-aviso">
+      <span class="ae-aviso-icon">👷</span>
+      <p class="ae-aviso-texto">La atención se realiza con personal que cuenta con la formación y cualificación adecuada para cada actividad.</p>
+    </div>
+  </div>
+
+  <div class="ae-divisor"></div>
+
+  <h2 class="ae-sec-titulo">Documentos para <em>inscribirse</em></h2>
+  <div class="ae-docs">
+    <a href="https://drive.google.com/file/d/1B83_j1MRKYrhsDdN8jfTscnjcdKabaKh/view?usp=sharing" target="_blank" rel="noopener" class="ae-doc">
+      <div class="ae-doc-icon" style="background:#e8f2fc;">📄</div>
+      <div>
+        <p class="ae-doc-tipo" style="color:#3b82c4;">Descarga PDF</p>
+        <p class="ae-doc-titulo">Solicitud de Admisión</p>
+        <p class="ae-doc-desc">Impreso de inscripción en las actividades extraescolares del centro.</p>
+      </div>
+    </a>
+    <a href="https://drive.google.com/file/d/1NfLpOr5b2qOjmQ8ct_SqBDpv-o5zuGCa/view?usp=sharing" target="_blank" rel="noopener" class="ae-doc">
+      <div class="ae-doc-icon" style="background:#eaf7ec;">📋</div>
+      <div>
+        <p class="ae-doc-tipo" style="color:#3a9e4f;">Descarga PDF</p>
+        <p class="ae-doc-titulo">Solicitud de Bonificación</p>
+        <p class="ae-doc-desc">Reducción de la tarifa. Recuerda que solo se bonifica una actividad por alumno.</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="ae-divisor"></div>
+
+  <h2 class="ae-sec-titulo">Otros <em>servicios</em></h2>
+  <div class="ae-nav">
+    <a href="aula-matinal.html" class="ae-nav-card">
+      <div class="ae-nav-icon" style="background:#fffbea;">🌅</div>
+      <div>
+        <p class="ae-nav-label">Plan de Apertura</p>
+        <p class="ae-nav-titulo">Aula Matinal</p>
+      </div>
+      <span class="ae-nav-arrow">→</span>
+    </a>
+    <a href="comedor.html" class="ae-nav-card">
+      <div class="ae-nav-icon" style="background:#fff3e4;">🍽️</div>
+      <div>
+        <p class="ae-nav-label">Plan de Apertura</p>
+        <p class="ae-nav-titulo">Comedor Escolar</p>
+      </div>
+      <span class="ae-nav-arrow">→</span>
+    </a>
+    <a href="ampa.html" class="ae-nav-card">
+      <div class="ae-nav-icon" style="background:#e8f2fc;">👨‍👩‍👧</div>
+      <div>
+        <p class="ae-nav-label">Asociación</p>
+        <p class="ae-nav-titulo">AMPA</p>
+      </div>
+      <span class="ae-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<script>
+window.onload = function() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+};
+</script>
+
+</body>
+</html>
