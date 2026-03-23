@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2º Ciclo de Educación Primaria - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; }
+
+.p2-section { background: #fff; border-radius: 20px; overflow: hidden; padding: 52px 5% 52px; position: relative; }
+.p2-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, #3b82c4, #7c3aed, #3a9e4f, #f5c842); }
+
+.p2-hero { text-align: center; margin-bottom: 44px; padding-bottom: 36px; border-bottom: 2px solid #f8faf6; }
+.p2-badge { display: inline-flex; align-items: center; gap: 7px; background: #e8f2fc; color: #1a5a9a; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 18px; border: 1px solid rgba(59,130,196,.2); }
+.p2-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82c4; display: inline-block; }
+.p2-titulo { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 8px; }
+.p2-titulo em { font-style: italic; color: #3b82c4; }
+.p2-subtitulo { font-size: clamp(1rem, 2vw, 1.15rem); color: #8a9480; font-weight: 600; margin-bottom: 20px; }
+.p2-desc { font-size: 0.97rem; color: #4a5240; line-height: 1.85; max-width: 640px; margin: 0 auto; }
+.p2-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.p2-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; padding: 6px 14px; border-radius: 100px; border: 1.5px solid rgba(26,33,18,.08); }
+
+.p2-sec-titulo { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: #1a2112; line-height: 1.15; margin-bottom: 20px; }
+.p2-sec-titulo em { font-style: italic; color: #3b82c4; }
+
+.p2-ciclos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.p2-ciclo { border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; border: 1.5px solid rgba(26,33,18,.08); transition: transform 0.2s, box-shadow 0.2s; }
+.p2-ciclo:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.p2-ciclo-top { display: flex; align-items: center; gap: 12px; }
+.p2-ciclo-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+.p2-ciclo-num { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+.p2-ciclo-titulo { font-size: 0.92rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.p2-ciclo-edad { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; align-self: flex-start; }
+.p2-ciclo-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.65; }
+.p2-ciclo-activo { display: inline-flex; align-items: center; gap: 5px; font-size: 0.67rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; padding: 3px 10px; border-radius: 100px; background: #e8f2fc; color: #1a5a9a; align-self: flex-start; margin-top: 2px; }
+
+.p2-pilares { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; margin-bottom: 36px; }
+.p2-pilar { border: 1.5px solid rgba(26,33,18,.08); border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; background: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+.p2-pilar:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
+.p2-pilar-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.p2-pilar-titulo { font-size: 0.92rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.p2-pilar-texto { font-size: 0.8rem; color: #4a5240; line-height: 1.68; }
+
+.p2-info-box { border-left: 4px solid #3b82c4; border-radius: 0 14px 14px 0; background: #e8f2fc; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 36px; }
+.p2-info-box-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.p2-info-box-titulo { font-size: 0.9rem; font-weight: 800; color: #1a5a9a; margin-bottom: 6px; }
+.p2-info-box-texto { font-size: 0.82rem; color: #4a5240; line-height: 1.72; }
+
+.p2-divisor { height: 2px; background: #f8faf6; border-radius: 2px; margin: 32px 0; }
+
+.p2-norm-lista { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; }
+.p2-norm-item { border: 1.5px solid rgba(26,33,18,.08); border-radius: 11px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; background: #fff; transition: border-color 0.18s, background 0.18s; }
+.p2-norm-item:hover { border-color: rgba(59,130,196,.3); background: #e8f2fc; }
+.p2-norm-tipo { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; flex-shrink: 0; margin-top: 1px; white-space: nowrap; }
+.p2-norm-titulo { font-size: 0.82rem; font-weight: 700; color: #1a2112; line-height: 1.4; margin-bottom: 4px; }
+.p2-norm-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.p2-norm-link { font-size: 0.72rem; font-weight: 700; color: #3b82c4 !important; text-decoration: none; padding: 2px 8px; border-radius: 6px; background: rgba(59,130,196,.1); transition: background 0.15s; }
+.p2-norm-link:hover { background: rgba(59,130,196,.2); }
+
+.p2-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.p2-nav-card { border: 1.5px solid rgba(26,33,18,.08); border-radius: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.p2-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.07); border-color: rgba(59,130,196,.25); }
+.p2-nav-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.p2-nav-label { font-size: 0.72rem; color: #8a9480; font-weight: 600; margin-bottom: 2px; }
+.p2-nav-titulo { font-size: 0.83rem; font-weight: 800; color: #1a2112; line-height: 1.2; }
+.p2-nav-arrow { margin-left: auto; color: #8a9480; font-size: 0.9rem; flex-shrink: 0; }
+
+@media (max-width: 820px) {
+  .p2-ciclos, .p2-pilares, .p2-nav { grid-template-columns: 1fr; }
+  .p2-section { padding: 44px 5% 44px; border-radius: 14px; }
+}
+@media (max-width: 500px) {
+  .p2-section { padding: 36px 5% 36px; }
+  .p2-info-box { flex-direction: column; gap: 10px; }
+  .p2-hero { margin-bottom: 32px; padding-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="p2-section">
+
+  <div class="p2-hero">
+    <div class="p2-badge"><span class="p2-badge-dot"></span>&nbsp;Enseñanzas · CEIP El Tejar</div>
+    <h1 class="p2-titulo">2º Ciclo de<br><em>Educación Primaria</em></h1>
+    <p class="p2-subtitulo">3º y 4º de Primaria · 8 a 10 años</p>
+    <p class="p2-desc">Etapa de consolidación del aprendizaje basada en el enfoque constructivista. El alumnado amplía sus conocimientos partiendo de sus ideas previas y construye nuevos contenidos mediante su actividad y experiencias significativas.</p>
+    <div class="p2-pills">
+      <span class="p2-pill" style="background:#e8f2fc;color:#1a5a9a;border-color:rgba(59,130,196,.2);">✓ Obligatoria</span>
+      <span class="p2-pill" style="background:#eaf7ec;color:#2a7a3b;border-color:rgba(58,158,79,.2);">✓ Gratuita</span>
+      <span class="p2-pill" style="background:#f3eeff;color:#4a1a9a;border-color:rgba(124,58,237,.15);">Enfoque constructivista</span>
+    </div>
+  </div>
+
+  <h2 class="p2-sec-titulo">Los tres <em>ciclos de Primaria</em></h2>
+  <div class="p2-ciclos">
+
+    <div class="p2-ciclo" style="background:#eaf7ec;border-color:rgba(58,158,79,.2);">
+      <div class="p2-ciclo-top">
+        <div class="p2-ciclo-icon" style="background:rgba(58,158,79,.15);">📗</div>
+        <div>
+          <p class="p2-ciclo-num" style="color:#3a9e4f;">Primer ciclo</p>
+          <p class="p2-ciclo-titulo">1º y 2º de Primaria</p>
+        </div>
+      </div>
+      <span class="p2-ciclo-edad" style="background:rgba(58,158,79,.12);color:#2a7a3b;">🎂 6 a 8 años</span>
+      <p class="p2-ciclo-texto">Iniciación a la lectura, escritura y matemáticas. Bases del aprendizaje formal y convivencia en el aula.</p>
+    </div>
+
+    <div class="p2-ciclo" style="background:#e8f2fc;border-color:rgba(59,130,196,.2);">
+      <div class="p2-ciclo-top">
+        <div class="p2-ciclo-icon" style="background:rgba(59,130,196,.15);">📘</div>
+        <div>
+          <p class="p2-ciclo-num" style="color:#3b82c4;">Segundo ciclo</p>
+          <p class="p2-ciclo-titulo">3º y 4º de Primaria</p>
+        </div>
+      </div>
+      <span class="p2-ciclo-edad" style="background:rgba(59,130,196,.12);color:#1a5a9a;">🎂 8 a 10 años</span>
+      <p class="p2-ciclo-texto">Consolidación de aprendizajes con enfoque constructivista. Participación activa del alumnado en su propio proceso de aprendizaje.</p>
+      <span class="p2-ciclo-activo">● Esta página</span>
+    </div>
+
+    <div class="p2-ciclo" style="background:#fff3e4;border-color:rgba(232,131,26,.2);">
+      <div class="p2-ciclo-top">
+        <div class="p2-ciclo-icon" style="background:rgba(232,131,26,.15);">📙</div>
+        <div>
+          <p class="p2-ciclo-num" style="color:#e8831a;">Tercer ciclo</p>
+          <p class="p2-ciclo-titulo">5º y 6º de Primaria</p>
+        </div>
+      </div>
+      <span class="p2-ciclo-edad" style="background:rgba(232,131,26,.12);color:#7a3a00;">🎂 10 a 12 años</span>
+      <p class="p2-ciclo-texto">Profundización y preparación para la ESO. Pensamiento crítico, autonomía y responsabilidad.</p>
+    </div>
+
+  </div>
+
+  <div class="p2-divisor"></div>
+
+  <h2 class="p2-sec-titulo">Pilares <em>pedagógicos</em></h2>
+  <div class="p2-pilares">
+
+    <div class="p2-pilar" style="border-color:rgba(124,58,237,.15);">
+      <div class="p2-pilar-icon" style="background:#f3eeff;">🧱</div>
+      <p class="p2-pilar-titulo">Enfoque constructivista</p>
+      <p class="p2-pilar-texto">Partimos de las ideas previas del alumnado y le damos participación activa en la elaboración de nuevos aprendizajes. Cada niño y niña construye el conocimiento desde su propia experiencia.</p>
+    </div>
+
+    <div class="p2-pilar" style="border-color:rgba(59,130,196,.18);">
+      <div class="p2-pilar-icon" style="background:#e8f2fc;">🌍</div>
+      <p class="p2-pilar-titulo">Escuela inclusiva</p>
+      <p class="p2-pilar-texto">Andalucía defiende una educación igualitaria y democrática que garantiza el derecho de todo el alumnado a alcanzar el máximo desarrollo personal, intelectual, social y emocional.</p>
+    </div>
+
+    <div class="p2-pilar" style="border-color:rgba(58,158,79,.15);">
+      <div class="p2-pilar-icon" style="background:#eaf7ec;">🎯</div>
+      <p class="p2-pilar-titulo">Desarrollo integral</p>
+      <p class="p2-pilar-texto">El objetivo fundamental de la educación obligatoria es el desarrollo integral de la persona a nivel individual y social, preparándola para vivir en una sociedad diversa en continuo cambio.</p>
+    </div>
+
+    <div class="p2-pilar" style="border-color:rgba(245,200,66,.25);">
+      <div class="p2-pilar-icon" style="background:#fffbea;">📋</div>
+      <p class="p2-pilar-titulo">Currículo compartido</p>
+      <p class="p2-pilar-texto">El currículo de Primaria es el proyecto educativo general y común a todos los centros de Andalucía, que cada uno concreta a través de su propio proyecto educativo de centro.</p>
+    </div>
+
+    <div class="p2-pilar" style="border-color:rgba(59,130,196,.18);">
+      <div class="p2-pilar-icon" style="background:#e8f2fc;">🔧</div>
+      <p class="p2-pilar-titulo">Adaptación al contexto</p>
+      <p class="p2-pilar-texto">Corresponde a los centros y al profesorado realizar la concreción y adaptación curricular según las situaciones escolares y las características específicas de cada alumno y alumna.</p>
+    </div>
+
+    <div class="p2-pilar" style="border-color:rgba(124,58,237,.15);">
+      <div class="p2-pilar-icon" style="background:#f3eeff;">✨</div>
+      <p class="p2-pilar-titulo">Aprendizaje significativo</p>
+      <p class="p2-pilar-texto">Los nuevos contenidos se incorporan mediante actividades y experiencias significativas que conectan con la realidad del alumnado y tienen sentido para su vida cotidiana.</p>
+    </div>
+
+  </div>
+
+  <div class="p2-info-box">
+    <div class="p2-info-box-icon">💡</div>
+    <div>
+      <p class="p2-info-box-titulo">¿Qué significa aprender de forma constructivista?</p>
+      <p class="p2-info-box-texto">En este ciclo no se trata solo de transmitir conocimientos, sino de ayudar al alumnado a construirlos. El docente actúa como guía, planteando situaciones que conectan con lo que el niño o la niña ya sabe y le permiten avanzar hacia nuevos aprendizajes de forma activa, reflexiva y significativa.</p>
+    </div>
+  </div>
+
+  <div class="p2-divisor"></div>
+
+  <h2 class="p2-sec-titulo">Normativa <em>de referencia</em></h2>
+  <div class="p2-norm-lista">
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#eaf7ec;color:#2a7a3b;">Orden</span>
+      <div>
+        <p class="p2-norm-titulo">Orden de 15 de enero de 2021 — Currículo de Educación Primaria en Andalucía. Atención a la diversidad, evaluación y tránsito entre etapas (BOJA Extraordinario nº 7, 18-01-2021).</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021EducacionPrimaria.pdf" target="_blank" class="p2-norm-link">Orden completa</a>
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021PrimariaAnexoI.pdf" target="_blank" class="p2-norm-link">Anexo I — Horarios</a>
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021PrimariaAnexoII.pdf" target="_blank" class="p2-norm-link">Anexo II — Áreas troncales</a>
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021PrimariaAnexoIII.pdf" target="_blank" class="p2-norm-link">Anexo III — Áreas específicas</a>
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021PrimariaAnexoIV.pdf" target="_blank" class="p2-norm-link">Anexo IV — Libre configuración</a>
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021PrimariaAnexoVyVI.pdf" target="_blank" class="p2-norm-link">Anexo V y VI — Evaluación</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#e8f2fc;color:#1a5a9a;">Corrección</span>
+      <div>
+        <p class="p2-norm-titulo">Corrección de errores de la Orden de 15 de enero de 2021 (BOJA 22-06-2021).</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/ordenes/Orden15enero2021CorreccionErrores.pdf" target="_blank" class="p2-norm-link">Ver documento</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#fff3e4;color:#7a3a00;">Decreto</span>
+      <div>
+        <p class="p2-norm-titulo">Decreto 97/2015, de 3 de marzo — Ordenación y currículo de Educación Primaria en Andalucía (texto consolidado 17-11-2020).</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/decretos/Decreto97-2015PrimariaConsolidado2020.pdf" target="_blank" class="p2-norm-link">Texto consolidado</a>
+          <a href="https://www.adideandalucia.es/normas/decretos/Decreto97-2015EducacionPrimaria.pdf" target="_blank" class="p2-norm-link">Versión original</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#fff3e4;color:#7a3a00;">Decreto</span>
+      <div>
+        <p class="p2-norm-titulo">Decreto 181/2020, de 10 de noviembre — Modificación del Decreto 97/2015 de Educación Primaria en Andalucía (BOJA 16-11-2020).</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/decretos/Decreto181-2020ModificaDecretoPrimaria.pdf" target="_blank" class="p2-norm-link">Ver decreto</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#fffbea;color:#7a5c00;">Instrucción</span>
+      <div>
+        <p class="p2-norm-titulo">Instrucción 8/2020, de 15 de junio — Organización y funcionamiento de centros de Educación Primaria, curso 2020-21.</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/instruc/Instruccion8-2020OrganizacionEducacionPrimaria.pdf" target="_blank" class="p2-norm-link">Instrucción</a>
+          <a href="https://www.adideandalucia.es/normas/instruc/Instruccion8-2020AnexoPrimaria.pdf" target="_blank" class="p2-norm-link">Anexo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#fffbea;color:#7a5c00;">Instrucción</span>
+      <div>
+        <p class="p2-norm-titulo">Instrucción 13/2018, de 7 de septiembre — Talleres didácticos de resolución de problemas matemáticos y lectura comprensiva en Primaria.</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/instruc/Instrucciones13-2018TalleresLenguaMatematicas.pdf" target="_blank" class="p2-norm-link">Ver instrucción</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-norm-item">
+      <span class="p2-norm-tipo" style="background:#eaf7ec;color:#2a7a3b;">R.D.</span>
+      <div>
+        <p class="p2-norm-titulo">Real Decreto 126/2014, de 28 de febrero — Currículo básico de Educación Primaria (BOE 01-03-2014).</p>
+        <div class="p2-norm-links">
+          <a href="https://www.adideandalucia.es/normas/RD/RD_126_2014CurriculoPrimaria.pdf" target="_blank" class="p2-norm-link">Ver real decreto</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p2-divisor"></div>
+
+  <h2 class="p2-sec-titulo">Otras <em>enseñanzas</em></h2>
+  <div class="p2-nav">
+    <a href="infantil.html" class="p2-nav-card">
+      <div class="p2-nav-icon" style="background:#fffbea;">🌱</div>
+      <div>
+        <p class="p2-nav-label">Infantil</p>
+        <p class="p2-nav-titulo">2º Ciclo de Ed. Infantil</p>
+      </div>
+      <span class="p2-nav-arrow">→</span>
+    </a>
+    <a href="primaria1.html" class="p2-nav-card">
+      <div class="p2-nav-icon" style="background:#eaf7ec;">📗</div>
+      <div>
+        <p class="p2-nav-label">Primaria</p>
+        <p class="p2-nav-titulo">1º Ciclo de Ed. Primaria</p>
+      </div>
+      <span class="p2-nav-arrow">→</span>
+    </a>
+    <a href="primaria3.html" class="p2-nav-card">
+      <div class="p2-nav-icon" style="background:#fff3e4;">📙</div>
+      <div>
+        <p class="p2-nav-label">Primaria</p>
+        <p class="p2-nav-titulo">3º Ciclo de Ed. Primaria</p>
+      </div>
+      <span class="p2-nav-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+</body>
+</html>
