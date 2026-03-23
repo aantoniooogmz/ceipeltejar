@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Equipo - CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde:   #3a9e4f;
+  --verde-d: #2a7a3b;
+  --verde-l: #eaf7ec;
+  --azul:    #3b82c4;
+  --azul-l:  #e8f2fc;
+  --naranja: #e8831a;
+  --nar-l:   #fff3e4;
+  --amar:    #f5c842;
+  --amar-l:  #fffbea;
+  --tinta:   #111814;
+  --tinta2:  #3d4a3e;
+  --tinta3:  #8a9a8b;
+  --bg:      #f4f7f4;
+  --white:   #ffffff;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Nunito',sans-serif; background:transparent; }
+
+@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+.wrap { background:var(--white); border-radius:20px; overflow:hidden; position:relative; }
+.wrap::before { content:''; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,var(--verde),var(--amar),var(--naranja),var(--azul),var(--verde));
+  background-size:200%; animation:shimmer 5s linear infinite; }
+
+/* HERO */
+.hero { padding:56px 5% 0; text-align:center; }
+.hero-badge { display:inline-flex; align-items:center; gap:7px; background:var(--verde-l);
+  color:var(--verde-d); font-size:.67rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; padding:5px 14px 5px 10px; border-radius:100px;
+  border:1px solid rgba(58,158,79,.2); margin-bottom:20px; }
+.bdot { width:7px; height:7px; border-radius:50%; background:var(--verde); flex-shrink:0; }
+.hero h1 { font-family:'Fraunces',serif; font-size:clamp(2.2rem,4.5vw,3.2rem);
+  font-weight:800; color:var(--tinta); line-height:1.05; margin-bottom:6px; }
+.hero h1 em { font-style:italic; color:var(--verde); }
+.hero-sub { font-size:1rem; color:var(--tinta3); font-weight:600; margin-bottom:28px; }
+
+/* STATS */
+.stats { display:flex; justify-content:center; margin-bottom:40px; flex-wrap:wrap; }
+.stat { padding:16px 24px; text-align:center; border-right:2px solid var(--bg); }
+.stat:last-child { border-right:none; }
+.stat-n { font-family:'Fraunces',serif; font-size:2rem; font-weight:800; line-height:1; display:block; }
+.stat-l { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--tinta3); display:block; margin-top:3px; }
+
+/* BUSCADOR */
+.search-wrap { padding:0 5% 28px; }
+.search-box { display:flex; align-items:center; gap:0;
+  border:2px solid rgba(0,0,0,.08); border-radius:14px; background:var(--bg); overflow:hidden;
+  transition:border-color .18s; }
+.search-box:focus-within { border-color:var(--verde); background:var(--white); }
+.search-box svg { margin-left:14px; flex-shrink:0; opacity:.4; }
+.search-box input { flex:1; font-family:'Nunito',sans-serif; font-size:.9rem; font-weight:600;
+  padding:13px 14px; border:none; background:transparent; outline:none; color:var(--tinta); }
+.search-box input::placeholder { color:var(--tinta3); }
+
+/* FILTROS */
+.filtros { display:flex; gap:8px; padding:0 5% 36px; flex-wrap:wrap; }
+.fbtn { font-family:'Nunito',sans-serif; font-size:.76rem; font-weight:700;
+  padding:7px 15px; border-radius:100px; border:1.5px solid rgba(0,0,0,.09);
+  background:var(--white); color:var(--tinta2); cursor:pointer; white-space:nowrap;
+  transition:all .16s; }
+.fbtn:hover { border-color:var(--verde); color:var(--verde-d); background:var(--verde-l); }
+.fbtn.on { background:var(--verde); color:#fff; border-color:var(--verde); }
+
+/* GRUPOS */
+.grupos { padding:0 5% 20px; }
+.grupo { margin-bottom:40px; animation:fadeUp .45s ease both; }
+.grupo.hide { display:none !important; }
+
+.g-header { display:flex; align-items:center; gap:13px; margin-bottom:18px;
+  padding-bottom:13px; border-bottom:2px solid var(--bg); }
+.g-ico { width:42px; height:42px; border-radius:11px;
+  display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0; }
+.g-tit { font-family:'Fraunces',serif; font-size:1.15rem; font-weight:700; color:var(--tinta); }
+.g-cnt { margin-left:auto; font-size:.7rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.1em; color:var(--tinta3); background:var(--bg); padding:4px 12px; border-radius:100px; }
+
+/* CARDS */
+.cards { display:grid; grid-template-columns:repeat(4,1fr); gap:11px; }
+.card { background:var(--bg); border-radius:13px; padding:20px 14px 16px;
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:9px;
+  border:1.5px solid transparent;
+  transition:transform .2s,box-shadow .2s,border-color .2s,background .2s; }
+.card:hover { transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.08);
+  background:var(--white); border-color:rgba(58,158,79,.2); }
+.card.xhide { display:none; }
+
+.c-av { width:50px; height:50px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; font-weight:900; box-shadow:0 2px 10px rgba(0,0,0,.07); flex-shrink:0; }
+.c-nom { font-size:.8rem; font-weight:800; color:var(--tinta); line-height:1.3; }
+.c-ape { font-size:.73rem; font-weight:600; color:var(--tinta3); line-height:1.3; }
+.c-pill { font-size:.62rem; font-weight:800; padding:3px 10px; border-radius:100px;
+  text-transform:uppercase; letter-spacing:.05em; white-space:nowrap; }
+
+/* VER MÁS */
+.vm-wrap { text-align:center; margin-top:14px; }
+.vm-btn { font-family:'Nunito',sans-serif; font-size:.8rem; font-weight:800;
+  padding:9px 22px; border-radius:100px; border:1.5px solid rgba(0,0,0,.1);
+  background:var(--white); color:var(--verde-d); cursor:pointer; transition:all .18s; }
+.vm-btn:hover { background:var(--verde); color:#fff; border-color:var(--verde); }
+.vm-btn.gone { display:none; }
+
+/* DIVISOR NO DOCENTE */
+.divider-nd { height:2px; background:var(--bg); margin:8px 5% 36px; border-radius:2px; }
+.nd-titulo { font-family:'Fraunces',serif; font-size:1.6rem; font-weight:700;
+  color:var(--tinta); padding:0 5%; margin-bottom:8px; }
+.nd-titulo em { font-style:italic; color:var(--azul); }
+
+/* SIN RESULTADOS */
+.nada { text-align:center; padding:48px 20px; color:var(--tinta3); font-size:.9rem; display:none; }
+.nada.show { display:block; }
+
+/* FOOTER PADDING */
+.pb { height:40px; }
+
+@media(max-width:820px){
+  .cards { grid-template-columns:repeat(3,1fr); }
+  .stat { padding:12px 16px; }
+}
+@media(max-width:560px){
+  .cards { grid-template-columns:repeat(2,1fr); }
+  .filtros { gap:6px; }
+  .fbtn { font-size:.7rem; padding:6px 12px; }
+  .stats { flex-wrap:wrap; }
+  .stat { width:50%; border-right:none; border-bottom:2px solid var(--bg); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge"><span class="bdot"></span>&nbsp;El Centro · CEIP El Tejar</div>
+  <h1>Nuestro <em>equipo</em></h1>
+  <p class="hero-sub">Curso 2025 / 2026 · 61 profesionales</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-n" style="color:var(--verde)">47</span><span class="stat-l">Docentes</span></div>
+    <div class="stat"><span class="stat-n" style="color:var(--azul)">14</span><span class="stat-l">No docentes</span></div>
+    <div class="stat"><span class="stat-n" style="color:var(--naranja)">10</span><span class="stat-l">Especialidades</span></div>
+    <div class="stat"><span class="stat-n" style="color:var(--amar)">61</span><span class="stat-l">Total personal</span></div>
+  </div>
+</div>
+
+<!-- BÚSQUEDA -->
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="q" placeholder="Buscar por nombre…" oninput="buscar()">
+  </div>
+</div>
+
+<!-- FILTROS -->
+<div class="filtros">
+  <button class="fbtn on" onclick="filtrar('',this)">Todos</button>
+  <button class="fbtn" onclick="filtrar('infantil',this)">🧸 Ed. Infantil</button>
+  <button class="fbtn" onclick="filtrar('primaria',this)">✏️ Ed. Primaria</button>
+  <button class="fbtn" onclick="filtrar('ingles',this)">🇬🇧 Inglés</button>
+  <button class="fbtn" onclick="filtrar('edfisica',this)">🏃 Ed. Física</button>
+  <button class="fbtn" onclick="filtrar('al',this)">🗣️ Aud. y Lenguaje</button>
+  <button class="fbtn" onclick="filtrar('pt',this)">🧩 Ped. Terapéutica</button>
+  <button class="fbtn" onclick="filtrar('religion',this)">✝️ Religión</button>
+  <button class="fbtn" onclick="filtrar('otros',this)">🎵 Otros</button>
+  <button class="fbtn" onclick="filtrar('nodocente',this)">👥 No docente</button>
+</div>
+
+<!-- GRUPOS DOCENTES -->
+<div class="grupos" id="gd"></div>
+
+<!-- NO DOCENTE -->
+<div id="nd-block">
+  <div class="divider-nd"></div>
+  <p class="nd-titulo">Personal <em>no docente</em></p>
+  <div class="grupos" id="gnd"></div>
+</div>
+
+<div class="nada" id="nada">No hay resultados para esa búsqueda.</div>
+<div class="pb"></div>
+
+</div>
+
+<script>
+const LIMIT = 8;
+
+const AV = [
+  {bg:'#eaf7ec',c:'#2a7a3b'},{bg:'#e8f2fc',c:'#1a5a9a'},
+  {bg:'#fffbea',c:'#7a5c00'},{bg:'#fff3e4',c:'#7a3a00'},
+  {bg:'#fdeef6',c:'#7a1a4a'},{bg:'#f3eeff',c:'#4a1a9a'},
+  {bg:'#fdeaea',c:'#7a1a1a'},{bg:'#dff3fb',c:'#00527a'},
+];
+const av = n => AV[n.charCodeAt(0) % AV.length];
+
+function ini(nombre) {
+  const p = nombre.split(',');
+  const ap1 = (p[0]||'').trim()[0]||'';
+  const nom1 = (p[1]||'').trim()[0]||'';
+  return (ap1+nom1).toUpperCase();
+}
+function nom(n) { return (n.split(',')[1]||'').trim().split(' ')[0]; }
+function ap(n)  { return (n.split(',')[0]||n).trim(); }
+
+const GRUPOS_D = [
+  { id:'infantil',  ico:'🧸', bg:'#fffbea', tit:'Educación Infantil',          pill:{bg:'#fffbea',c:'#7a5c00'},
+    data:['Cámara Castro, Ana Isabel','Caparrós Padilla, María Carmen','Eichelbaum Sánchez, Laura',
+          'Hita Sáez, María Concepción','Martín Méndez, Inmaculada','Palomino Esteban, María Jesús','Pastor Aguilar, Ana Rosa'] },
+
+  { id:'primaria',  ico:'✏️', bg:'#eaf7ec', tit:'Educación Primaria',           pill:{bg:'#eaf7ec',c:'#2a7a3b'},
+    data:['Alcántara Cuesta, Fernando David','Caparrós Rubio, Isabel María','Crescini, Valeria',
+          'García Tamayo, Rosa María','León Cruz, Olga','Martínez Moreno, Trinidad',
+          'Millán Santos, María José','Montes Martos, Víctor Francisco','Nicás Fernandez, María Luisa',
+          'Ortega Barranco, Raquel','Peña Castellano, Mónica','Reus Lara, José Alfonso',
+          'Rodríguez Padilla, Sara','Rodríguez Pulido, Isidro','Rosas Marqués, Carmen María',
+          'Serón Burgos, María del Mar','Bascón Moreno, Cristóbal','Sarmiento Cano, Inmaculada'] },
+
+  { id:'ingles',    ico:'🇬🇧', bg:'#e8f2fc', tit:'Lengua Extranjera — Inglés', pill:{bg:'#e8f2fc',c:'#1a5a9a'},
+    data:['Fuentes Justicia, Ana María','Moreno Trujillo, María Dolores','Salido Ruiz, Rosario Victoria'] },
+
+  { id:'edfisica',  ico:'🏃', bg:'#fdeaea', tit:'Educación Física',             pill:{bg:'#fdeaea',c:'#7a1a1a'},
+    data:['Galán Carrillo, Estefanía','Jiménez Crespillo, Daniel','Rando Jiménez, Paula','Reyero Mesa, Máximo'] },
+
+  { id:'al',        ico:'🗣️', bg:'#fff3e4', tit:'Audición y Lenguaje',          pill:{bg:'#fff3e4',c:'#7a3a00'},
+    data:['González Espinosa, Ana María','Heredia del Valle, Sonia','Jurado Díaz, Ana Belén',
+          'Martín Herrera, María Félix','Vega Valero, Marta'] },
+
+  { id:'pt',        ico:'🧩', bg:'#f3eeff', tit:'Pedagogía Terapéutica',        pill:{bg:'#f3eeff',c:'#4a1a9a'},
+    data:['Camero Vázquez, Carmen','Pérez Sojo, Belén María','Sánchez Delgado, Elena María'] },
+
+  { id:'religion',  ico:'✝️', bg:'#f8faf6', tit:'Prof. Religión de Primaria',   pill:{bg:'#f8faf6',c:'#4a5240'},
+    data:['Barrabino Calzado, Rebeca','Martínez Jiménez, Carlos Rafael','Mata Gutiérrez, Fernando',
+          'Reina Real, Lidia','Salado Porras, Marta','Solano Sánchez, Sara'] },
+
+  { id:'otros',     ico:'🎵', bg:'#fdeef6', tit:'Otras especialidades',          pill:{bg:'#fdeef6',c:'#7a1a4a'},
+    data:['Gómez Luna, Marta Isabel','Martínez Rueda, Manuel','Romero Castillo, Laura','Martínez Fernández, Ana'] },
+];
+
+const GRUPO_ND = {
+  id:'nodocente', pill:{bg:'#e8f2fc',c:'#1a5a9a'},
+  data:['Álvarez Pizarro, Raquel','Becerra Ramos, Sonia','Domínguez Gutiérrez, María del Carmen',
+        'Fernandez Alonso, Alba','Guemalmazian, Rebecca','Jiménez Medina, María Fernanda',
+        'Lerena Jiménez, Isabel María','Madueño Meléndez, Cristobalina','Martín Rodríguez-Hesles, Silvia',
+        'Muñoz Molina, Lorena','Ortega Rodríguez, Ana Belén','Rodríguez Lara, Ana María',
+        'Sevilla Blanco, Santiago','Zurita Hernández, Lucía']
+};
+
+let expandidos = {};
+
+function buildCard(nombre, pill, hidden){
+  const a = av(nombre);
+  return `<div class="card${hidden?' xhide':''}" data-n="${nombre.toLowerCase()}">
+    <div class="c-av" style="background:${a.bg};color:${a.c};">${ini(nombre)}</div>
+    <div>
+      <div class="c-nom">${nom(nombre)||nombre}</div>
+      <div class="c-ape">${ap(nombre)}</div>
+    </div>
+    <span class="c-pill" style="background:${pill.bg};color:${pill.c};">${pill.label||''}</span>
+  </div>`;
+}
+
+function buildGrupo(g, isND){
+  const pill = {...g.pill, label: isND ? 'No docente' : ''};
+  const cards = g.data.map((n,i)=>buildCard(n,{...pill,label:''}, i>=LIMIT)).join('');
+  const extra = g.data.length - LIMIT;
+  const btnHtml = extra > 0
+    ? `<div class="vm-wrap"><button class="vm-btn" id="vmbtn-${g.id}" onclick="verMas('${g.id}')">Ver los ${extra} restantes →</button></div>`
+    : '';
+  if(isND){
+    return `<div class="grupo" id="g-${g.id}" data-id="${g.id}">
+      <div class="cards" id="cards-${g.id}">${cards}</div>${btnHtml}</div>`;
+  }
+  return `<div class="grupo" id="g-${g.id}" data-id="${g.id}">
+    <div class="g-header">
+      <div class="g-ico" style="background:${g.bg};">${g.ico}</div>
+      <span class="g-tit">${g.tit}</span>
+      <span class="g-cnt">${g.data.length} personas</span>
+    </div>
+    <div class="cards" id="cards-${g.id}">${cards}</div>${btnHtml}
+  </div>`;
+}
+
+function verMas(id){
+  document.querySelectorAll(`#cards-${id} .xhide`).forEach(c=>c.classList.remove('xhide'));
+  document.getElementById('vmbtn-'+id)?.classList.add('gone');
+  expandidos[id] = true;
+  sync();
+}
+
+// Render inicial
+document.getElementById('gd').innerHTML  = GRUPOS_D.map(g=>buildGrupo(g,false)).join('');
+document.getElementById('gnd').innerHTML = buildGrupo(GRUPO_ND, true);
+
+// Filtro por grupo
+let filtroActivo = '';
+function filtrar(id, btn){
+  filtroActivo = id;
+  document.getElementById('q').value = '';
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+
+  const ndBlock = document.getElementById('nd-block');
+
+  if(id === ''){
+    GRUPOS_D.forEach(g=>document.getElementById('g-'+g.id)?.classList.remove('hide'));
+    ndBlock.style.display = '';
+  } else if(id === 'nodocente'){
+    GRUPOS_D.forEach(g=>document.getElementById('g-'+g.id)?.classList.add('hide'));
+    ndBlock.style.display = '';
+  } else {
+    GRUPOS_D.forEach(g=>{
+      const el = document.getElementById('g-'+g.id);
+      el?.classList.toggle('hide', g.id !== id);
+    });
+    ndBlock.style.display = 'none';
+  }
+  document.getElementById('nada').classList.remove('show');
+  sync();
+}
+
+// Búsqueda
+function buscar(){
+  const q = document.getElementById('q').value.toLowerCase().trim();
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  document.querySelector('.fbtn').classList.add('on');
+  filtroActivo = '';
+
+  const ndBlock = document.getElementById('nd-block');
+  ndBlock.style.display = '';
+  GRUPOS_D.forEach(g=>document.getElementById('g-'+g.id)?.classList.remove('hide'));
+
+  if(!q){
+    // restaurar visibilidad según límite y expandidos
+    [...GRUPOS_D.map(g=>g.id), 'nodocente'].forEach(id=>{
+      document.querySelectorAll(`#cards-${id} .card`).forEach((c,i)=>{
+        c.classList.toggle('xhide', i >= LIMIT && !expandidos[id]);
+      });
+      const btn = document.getElementById('vmbtn-'+id);
+      if(btn && !expandidos[id]) btn?.classList.remove('gone');
+    });
+    document.getElementById('nada').classList.remove('show');
+    sync(); return;
+  }
+
+  let total = 0;
+  [...GRUPOS_D.map(g=>g.id), 'nodocente'].forEach(id=>{
+    const grupo = document.getElementById('g-'+id);
+    const cards = document.querySelectorAll(`#cards-${id} .card`);
+    let vis = 0;
+    cards.forEach(c=>{
+      const match = c.dataset.n.includes(q);
+      c.classList.toggle('xhide', !match);
+      if(match) vis++;
+    });
+    document.getElementById('vmbtn-'+id)?.classList.add('gone');
+    grupo?.classList.toggle('hide', vis === 0);
+    total += vis;
+  });
+
+  document.getElementById('nada').classList.toggle('show', total === 0);
+  sync();
+}
+
+function sync(){
+  setTimeout(()=>window.parent.postMessage({height:document.body.scrollHeight+40},'*'),150);
+}
+window.onload = sync;
+</script>
+</body>
+</html>
