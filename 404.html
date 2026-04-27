@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada · CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f7f9f5;
+  color: #111814;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 580px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  animation: fadeUp .7s ease both;
+  box-shadow: 0 20px 60px rgba(0,0,0,.08);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #3a9e4f, #f5c842, #e8831a, #3b82c4, #3a9e4f);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.card-body { padding: 56px 48px 48px; }
+
+/* Número 404 grande */
+.num-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 8px;
+  animation: float 3.5s ease-in-out infinite;
+}
+.num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(5rem, 18vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, #3a9e4f, #3b82c4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -.04em;
+}
+.num-emoji {
+  position: absolute;
+  top: -10px; right: -28px;
+  font-size: 2rem;
+  animation: spin 8s linear infinite;
+  -webkit-text-fill-color: initial;
+}
+
+.titulo {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  color: #1a2112;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.titulo em { font-style: italic; color: #3a9e4f; }
+
+.desc {
+  font-size: 0.92rem;
+  color: #4a5240;
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+
+/* Botones */
+.btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: .85rem;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 11px;
+  transition: transform .2s, box-shadow .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
+}
+.btn-fill {
+  background: #3a9e4f;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(58,158,79,.28);
+}
+.btn-fill:hover { background: #2a7a3b; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(58,158,79,.35); }
+.btn-ghost {
+  background: #f7f9f5;
+  color: #1a2112;
+  border: 1.5px solid rgba(0,0,0,.1);
+}
+.btn-ghost:hover { border-color: #3a9e4f; background: #eaf7ec; transform: translateY(-2px); }
+
+/* Links rápidos */
+.links-titulo {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a8c7b;
+  margin-bottom: 14px;
+}
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(26,33,18,.08);
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  background: #f7f9f5;
+}
+.quick-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.07);
+  border-color: rgba(58,158,79,.25);
+  background: #eaf7ec;
+}
+.quick-link-icon { font-size: 1.3rem; }
+.quick-link-name { font-size: 0.72rem; font-weight: 800; color: #1a2112; text-align: center; line-height: 1.2; }
+
+@media (max-width: 500px) {
+  .card-body { padding: 48px 24px 36px; }
+  .links-grid { grid-template-columns: repeat(3, 1fr); }
+  .btns { flex-direction: column; align-items: center; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-body">
+
+    <div class="num-wrap">
+      <div class="num">404</div>
+      <span class="num-emoji">🔍</span>
+    </div>
+
+    <h1 class="titulo">¡Ups! Página <em>no encontrada</em></h1>
+    <p class="desc">Parece que esta página se ha ido de excursión sin avisar. Puede que la URL esté mal escrita o que el contenido haya cambiado de sitio.</p>
+
+    <div class="btns">
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/" class="btn btn-fill" target="_top">🏠 Volver al inicio</a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/novedades/" class="btn btn-ghost" target="_top">📰 Ver novedades</a>
+    </div>
+
+    <p class="links-titulo">O visita una de estas secciones</p>
+    <div class="links-grid">
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/planes-y-proyectos/" class="quick-link" target="_top">
+        <span class="quick-link-icon">📋</span>
+        <span class="quick-link-name">Planes y Proyectos</span>
+      </a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/contactar-con-el-centro/" class="quick-link" target="_top">
+        <span class="quick-link-icon">✉️</span>
+        <span class="quick-link-name">Contacto</span>
+      </a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/aula-matinal/" class="quick-link" target="_top">
+        <span class="quick-link-icon">🌅</span>
+        <span class="quick-link-name">Aula Matinal</span>
+      </a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/comedor-escolar/" class="quick-link" target="_top">
+        <span class="quick-link-icon">🍽️</span>
+        <span class="quick-link-name">Comedor</span>
+      </a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/actividades-extraescolares/" class="quick-link" target="_top">
+        <span class="quick-link-icon">⚽</span>
+        <span class="quick-link-name">Extraescolares</span>
+      </a>
+      <a href="https://blogsaverroes.juntadeandalucia.es/ceipeltejar/biblioteca/" class="quick-link" target="_top">
+        <span class="quick-link-icon">📖</span>
+        <span class="quick-link-name">Biblioteca</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+  window.parent.postMessage({ iframeHeight: document.body.scrollHeight + 40 }, '*');
+});
+</script>
+
+</body>
+</html>
