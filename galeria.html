@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería · CEIP El Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: transparent; padding: 0; margin: 0; }
+
+.gl-section {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 52px 5% 56px;
+  position: relative;
+}
+.gl-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #3a9e4f, #3b82c4, #e8831a, #f5c842);
+}
+
+/* HEADER */
+.gl-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #eaf7ec; color: #2a7a3b;
+  font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase;
+  padding: 4px 13px 4px 9px; border-radius: 100px; margin-bottom: 16px;
+  border: 1px solid rgba(58,158,79,.15);
+}
+.gl-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #3a9e4f; display: inline-block; }
+.gl-titulo {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700; color: #1a2112; line-height: 1.1; margin-bottom: 12px;
+}
+.gl-titulo em { font-style: italic; color: #3a9e4f; }
+.gl-subtitulo { font-size: 0.95rem; color: #4a5240; line-height: 1.8; max-width: 620px; margin-bottom: 32px; }
+
+/* FILTROS */
+.gl-filtros {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;
+}
+.gl-filtro {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem; font-weight: 800;
+  padding: 7px 16px; border-radius: 100px;
+  border: 1.5px solid rgba(26,33,18,.1);
+  background: #f7f9f5; color: #1a2112;
+  cursor: pointer; transition: all 0.18s;
+  letter-spacing: 0.02em;
+}
+.gl-filtro:hover { border-color: #3a9e4f; background: #eaf7ec; color: #2a7a3b; }
+.gl-filtro.active { background: #3a9e4f; color: #fff; border-color: #3a9e4f; }
+
+/* GRID */
+.gl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* CARD FOTO */
+.gl-card {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  background: #f0f4ee;
+  border: 1.5px solid rgba(26,33,18,.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.gl-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
+.gl-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.3s;
+}
+.gl-card:hover img { transform: scale(1.04); }
+
+.gl-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.2s;
+  display: flex; align-items: flex-end;
+  padding: 14px;
+}
+.gl-card:hover .gl-card-overlay { opacity: 1; }
+.gl-card-titulo {
+  font-size: 0.8rem; font-weight: 800; color: #fff;
+  line-height: 1.3; text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* Placeholder cuando no hay foto */
+.gl-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; font-size: 2rem;
+  background: linear-gradient(135deg, #eaf7ec, #fffbea);
+}
+.gl-placeholder-txt { font-size: 0.72rem; font-weight: 700; color: #7a8c7b; }
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.88);
+  z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.lightbox.open { display: flex; }
+.lightbox-inner {
+  position: relative;
+  max-width: 860px; width: 100%;
+  animation: fadeUp .25s ease;
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.lightbox-img {
+  width: 100%; max-height: 75vh;
+  object-fit: contain; border-radius: 14px;
+  display: block;
+}
+.lightbox-caption {
+  text-align: center; margin-top: 14px;
+  font-size: 0.88rem; font-weight: 700; color: rgba(255,255,255,.8);
+}
+.lightbox-close {
+  position: absolute; top: -16px; right: -16px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: #fff; border: none; cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+.lightbox-close:hover { background: #f0f0f0; }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; backdrop-filter: blur(4px);
+}
+.lightbox-nav:hover { background: rgba(255,255,255,.28); }
+.lightbox-prev { left: -56px; }
+.lightbox-next { right: -56px; }
+
+/* ESTADO VACÍO */
+.gl-empty {
+  grid-column: 1/-1; text-align: center;
+  padding: 52px 20px; color: #7a8c7b;
+}
+.gl-empty-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.gl-empty-txt { font-size: 0.9rem; font-weight: 700; }
+
+@media (max-width: 820px) {
+  .gl-grid { grid-template-columns: 1fr 1fr; }
+  .gl-section { padding: 44px 5% 44px; border-radius: 14px; }
+  .lightbox-prev { left: -14px; }
+  .lightbox-next { right: -14px; }
+}
+@media (max-width: 500px) {
+  .gl-grid { grid-template-columns: 1fr 1fr; }
+  .gl-section { padding: 36px 5% 36px; }
+}
+</style>
+</head>
+<body>
+
+<section class="gl-section">
+
+  <div class="gl-badge"><span class="gl-badge-dot"></span>&nbsp;CEIP El Tejar</div>
+  <h1 class="gl-titulo">Galería de <em>fotos</em></h1>
+  <p class="gl-subtitulo">Momentos especiales de la vida del centro: actividades, proyectos, eventos y mucho más.</p>
+
+  <!-- FILTROS -->
+  <div class="gl-filtros">
+    <button class="gl-filtro active" onclick="filtrar('todas', this)">🖼️ Todas</button>
+    <button class="gl-filtro" onclick="filtrar('actividades', this)">🎨 Actividades</button>
+    <button class="gl-filtro" onclick="filtrar('huerto', this)">🌿 Huerto Escolar</button>
+    <button class="gl-filtro" onclick="filtrar('eventos', this)">🎉 Eventos</button>
+    <button class="gl-filtro" onclick="filtrar('deportes', this)">⚽ Deportes</button>
+    <button class="gl-filtro" onclick="filtrar('biblioteca', this)">📚 Biblioteca</button>
+  </div>
+
+  <!-- GRID -->
+  <div class="gl-grid" id="gl-grid"></div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+//  FOTOS — Para añadir una foto nueva:
+//  1. Sube la foto a Google Drive
+//  2. Cópiala como pública ("Cualquier persona con el enlace")
+//  3. Copia el ID del enlace: drive.google.com/file/d/ESTE_ES_EL_ID/view
+//  4. Pon la URL así: https://drive.google.com/uc?export=view&id=ESTE_ES_EL_ID
+//  5. Añade un objeto nuevo al array con categoria, titulo y url
+// ══════════════════════════════════════════════════════
+
+const FOTOS = [
+  // ACTIVIDADES
+  { categoria: 'actividades', titulo: 'Taller de pintura', url: '' },
+  { categoria: 'actividades', titulo: 'Manualidades de Navidad', url: '' },
+  { categoria: 'actividades', titulo: 'Día del libro', url: '' },
+
+  // HUERTO
+  { categoria: 'huerto', titulo: 'Plantando semillas', url: '' },
+  { categoria: 'huerto', titulo: 'Cosecha de primavera', url: '' },
+  { categoria: 'huerto', titulo: 'Cuidando el huerto', url: '' },
+
+  // EVENTOS
+  { categoria: 'eventos', titulo: 'Festival de Navidad', url: '' },
+  { categoria: 'eventos', titulo: 'Día de Andalucía', url: '' },
+  { categoria: 'eventos', titulo: 'Fiesta de fin de curso', url: '' },
+
+  // DEPORTES
+  { categoria: 'deportes', titulo: 'Torneo de fútbol sala', url: '' },
+  { categoria: 'deportes', titulo: 'Gymkana escolar', url: '' },
+  { categoria: 'deportes', titulo: 'Día del deporte', url: '' },
+
+  // BIBLIOTECA
+  { categoria: 'biblioteca', titulo: 'Club de lectura', url: '' },
+  { categoria: 'biblioteca', titulo: 'Cuentacuentos', url: '' },
+  { categoria: 'biblioteca', titulo: 'Presentación de libros', url: '' },
+];
+
+const EMOJIS_CAT = {
+  actividades: '🎨',
+  huerto: '🌿',
+  eventos: '🎉',
+  deportes: '⚽',
+  biblioteca: '📚',
+};
+
+const COLORES_CAT = {
+  actividades: 'linear-gradient(135deg,#e8f2fc,#eaf7ec)',
+  huerto:      'linear-gradient(135deg,#eaf7ec,#fffbea)',
+  eventos:     'linear-gradient(135deg,#fffbea,#fff3e4)',
+  deportes:    'linear-gradient(135deg,#fff3e4,#fdeaea)',
+  biblioteca:  'linear-gradient(135deg,#fffbea,#e8f2fc)',
+};
+
+let fotosFiltradas = [...FOTOS];
+let lightboxIndex = 0;
+
+function renderGrid(fotos) {
+  const grid = document.getElementById('gl-grid');
+  if (!fotos.length) {
+    grid.innerHTML = `<div class="gl-empty"><div class="gl-empty-icon">📷</div><p class="gl-empty-txt">No hay fotos en esta categoría aún.</p></div>`;
+    return;
+  }
+  grid.innerHTML = fotos.map((f, i) => {
+    const emoji = EMOJIS_CAT[f.categoria] || '📷';
+    const color = COLORES_CAT[f.categoria] || '#eaf7ec';
+    const contenido = f.url
+      ? `<img src="${f.url}" alt="${f.titulo}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'gl-placeholder\\'><span>${emoji}</span><span class=\\'gl-placeholder-txt\\'>Foto no disponible</span></div>'">`
+      : `<div class="gl-placeholder" style="background:${color};"><span>${emoji}</span><span class="gl-placeholder-txt">Próximamente</span></div>`;
+    return `
+      <div class="gl-card" onclick="abrirLightbox(${i})" data-index="${i}">
+        ${contenido}
+        <div class="gl-card-overlay">
+          <p class="gl-card-titulo">${f.titulo}</p>
+        </div>
+      </div>`;
+  }).join('');
+  fotosFiltradas = fotos;
+  sendHeight();
+}
+
+function filtrar(cat, btn) {
+  document.querySelectorAll('.gl-filtro').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const resultado = cat === 'todas' ? FOTOS : FOTOS.filter(f => f.categoria === cat);
+  renderGrid(resultado);
+}
+
+// LIGHTBOX
+function abrirLightbox(i) {
+  lightboxIndex = i;
+  const foto = fotosFiltradas[i];
+  if (!foto.url) return;
+  document.getElementById('lightbox-img').src = foto.url;
+  document.getElementById('lightbox-caption').textContent = foto.titulo;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function cerrarLightbox(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+function navLightbox(dir) {
+  let nuevo = lightboxIndex + dir;
+  const fotosConUrl = fotosFiltradas.filter(f => f.url);
+  if (!fotosConUrl.length) return;
+  // Busca la siguiente foto con URL
+  let intentos = 0;
+  do {
+    nuevo = ((nuevo % fotosFiltradas.length) + fotosFiltradas.length) % fotosFiltradas.length;
+    if (fotosFiltradas[nuevo].url) break;
+    nuevo += dir;
+    intentos++;
+  } while (intentos < fotosFiltradas.length);
+  abrirLightbox(nuevo);
+}
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+});
+
+// Altura iframe
+function sendHeight() {
+  setTimeout(() => {
+    window.parent.postMessage({ iframeHeight: document.body.scrollHeight }, '*');
+  }, 100);
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+
+// Arrancar
+renderGrid(FOTOS);
+</script>
+
+</body>
+</html>
