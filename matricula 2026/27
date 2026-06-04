@@ -1,0 +1,64 @@
+<section style="background:#0d47a1;padding:50px 20px;text-align:center;color:white;border-radius:10px;">
+    <h1 style="font-size:42px;margin-bottom:15px;">
+        Matrícula Curso 2026/2027
+    </h1>
+
+    <p style="font-size:20px;max-width:800px;margin:auto;">
+        Información y acceso a todos los trámites de matriculación del CEIP El Tejar.
+    </p>
+
+    <a href="https://www.juntadeandalucia.es/educacion/secretariavirtual/"
+       target="_blank"
+       style="display:inline-block;margin-top:25px;background:#ffc107;color:#000;
+              padding:15px 30px;text-decoration:none;font-weight:bold;
+              border-radius:8px;">
+       Realizar matrícula online
+    </a>
+</section>
+<section style="padding:40px 20px;">
+    <h2>Plazo de matriculación</h2>
+
+    <p>
+        Del 1 al 8 de junio de 2026, ambos inclusive.
+    </p>
+
+    <h2>Servicios complementarios</h2>
+
+    <ul>
+        <li>Aula Matinal</li>
+        <li>Comedor Escolar</li>
+        <li>Actividades Extraescolares</li>
+    </ul>
+
+    <h2>Documentación necesaria</h2>
+
+    <ul>
+        <li>Libro de Familia</li>
+        <li>DNI de los tutores</li>
+        <li>Documentación médica relevante</li>
+    </ul>
+</section>
+<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;">
+
+    <div style="flex:1;min-width:250px;padding:25px;
+                box-shadow:0 0 15px rgba(0,0,0,0.1);
+                border-radius:10px;">
+        <h3>📝 Matrícula</h3>
+        <p>Accede al proceso de matriculación para el curso 2026/2027.</p>
+    </div>
+
+    <div style="flex:1;min-width:250px;padding:25px;
+                box-shadow:0 0 15px rgba(0,0,0,0.1);
+                border-radius:10px;">
+        <h3>🍽️ Comedor</h3>
+        <p>Solicitud del servicio de comedor escolar.</p>
+    </div>
+
+    <div style="flex:1;min-width:250px;padding:25px;
+                box-shadow:0 0 15px rgba(0,0,0,0.1);
+                border-radius:10px;">
+        <h3>🌅 Aula Matinal</h3>
+        <p>Información y solicitud del servicio de aula matinal.</p>
+    </div>
+
+</div>
